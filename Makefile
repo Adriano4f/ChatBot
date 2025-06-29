@@ -3,7 +3,7 @@ include Flags.mk
 # DIRECTORIES
 SRC_DIR 		:= source
 OBJ_DIR 		:= source/obj
-INCLUDE_DIR 	:= include
+INCLUDE_DIR		:= include
 OBJ     		:= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # UNIX
