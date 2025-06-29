@@ -41,8 +41,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 
 # CLEAN
-u_CLEAN     	:= rm -f
-w_CLEAN    		:= del /F /Q
+u_CLEAN			:= rm -f
+w_CLEAN			:= del /F /Q
 
 clean:
 	$($(PLAT)_CLEAN) *.o
