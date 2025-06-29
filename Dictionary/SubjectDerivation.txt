@@ -1,0 +1,11 @@
+-me->i->object
+-what->it->question
+-who->it->question
+-she->it->gender->female
+-he->it->gender->male
+-thou->you->none
+-your->you->possessive
+-thy->you->possessive
+-mine->i->possessive
+-thine->i->possessive
+.

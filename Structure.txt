@@ -1,0 +1,17 @@
+CPU -> Central Processing Unit
+
+LI_Unit -> Language Input Unit
+
+LP_Unit -> Language Processing Unit
+- SemanticP -> Semantic Processing
+- IntentP -> Intent Processing
+
+M_Unit -> Memory Unit
+- MLearning -> Memory Learning
+
+LG_Unit -> Language Generation Unit
+
+
+
+//
+General_Utility -> General Purpose Methods
