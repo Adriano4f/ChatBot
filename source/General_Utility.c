@@ -66,7 +66,7 @@ char
 	(size_t nmemb, char *ptr)
 {
 	char *tmp_buffer = (char*)realloc(ptr, nmemb * sizeof(char));
-		return (char *) PtrVerify
+	return (char *) PtrVerify
 	( 	
 		(void *)tmp_buffer, 
 		"Reallocation Error.", 

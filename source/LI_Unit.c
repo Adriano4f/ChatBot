@@ -113,9 +113,9 @@ char
 		++i;
 		
 		printf("%s%s%s\t",
-		Txt(CYAN),
-		Token[i-1],
-		Txt(CRESET) ); // Debug
+			Txt(CYAN),
+			Token[i-1],
+			Txt(CRESET) ); // Debug
 		
 		if(i < sz-100)
 			continue;
