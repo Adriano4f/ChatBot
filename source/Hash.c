@@ -15,7 +15,7 @@ hashfn
     (const void *key,
     const size_t size)
 {
-    
+
 }
 
 
@@ -47,8 +47,7 @@ Hfind_slot
     const void *key,
     const  size_t size)
 {
-    size_t idx = hashfn(key, size) % this->CAPACITY;
-    
+    const size_t idx = hashfn(key, size) % this->CAPACITY;
     size_t toret = -1;
 
     for ( size_t i = idx; i < this->CAPACITY; ++i )
