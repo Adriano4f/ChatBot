@@ -309,7 +309,7 @@ Hresize
         this->CAPACITY = OLD_CAPACITY;
         return err_Hrehash;
     }
-    
+
     this->LOAD_FACTOR /= 2;
     return 0;
 }

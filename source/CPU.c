@@ -3,7 +3,7 @@
 
 short int Exit;
 
-int 
+int
 CentralProcess
 	(void)
 {
