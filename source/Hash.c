@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <setjmp.h> // Satanic things
-
+#include <math.h>
 
 // Methods
 
@@ -61,30 +61,35 @@ Hfind_slot
     if ( setjmp(err) )
     {
         Hresize(this);
-    }
-    const size_t idx = hashfn(key, size) & (this->CAPACITY-1); // Mod operation is really slow, and if I don't micro optimise I get stressed
-    size_t toret = -1;
+    }   
 
-    for ( size_t i = idx; i < this->CAPACITY; ++i )
+    assert((this->CAPACITY & (this->CAPACITY - 1)) == 0 && "CAPACITY must be power of two, what did you do");
+    const size_t o_idx = hashfn(key, size) & (this->CAPACITY-1); // Mod operation is really slow, and if I don't micro optimise I get stressed
+    size_t idx = o_idx;
+    size_t toret = SIZE_MAX;
+
+    for ( size_t i = 0; i < this->CAPACITY; ++i )
     {
-        const EntryState state  = this->TABLE[i].state;
-        const RHEntry tentry    = this->TABLE[i]; // This' Entry
+        idx %= this->CAPACITY;
+        const EntryState state  = this->TABLE[idx].state;
+        const RHEntry entry    = this->TABLE[idx];
 
         if ( TOMBSTONE == state || EMPTY == state )
         {
-            toret = i;
+            toret = idx;
             break;
         }
-        else if ( Hcompare_key_entry( key, size, tentry ) )
+        else if ( Hcompare_key_entry( key, size, entry ) )
         {
-            toret = i;
+            toret = idx;
             break;
         }
+        ++idx;
     }
-    if (-1 == toret)
+    if (SIZE_MAX == toret)
         longjmp(err, 1);
     
-    return (const size_t)toret;
+    return toret;
 }
 
 
@@ -120,7 +125,7 @@ Hdelete
     const size_t size)
 {
     /*
-        When deleting a bucket or slot (making it available) only RHENtry.state and RHEntry.ksize
+        When deleting a bucket or slot (making it available) only RHEntry.state and RHEntry.ksize
         state = TOMBSTONE; so it doesn't make inaccessible further keys
         ksize = 0; so in each comparison made with this key it is automatically ignored
 
@@ -311,6 +316,8 @@ Hresize
     }
 
     this->LOAD_FACTOR /= 2;
+    free(TABLE); // No memory leak
+    
     return 0;
 }
 
