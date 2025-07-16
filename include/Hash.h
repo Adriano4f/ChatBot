@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stddef.h>
 #include <stdbool.h>
 
 /* 
@@ -12,6 +13,13 @@ typedef enum
     TOMBSTONE 
 } EntryState;
 
+typedef enum
+{
+    CHAR,
+    INT,
+    INT64,
+} DisplayType;
+
 typedef struct {
     void        *key;
     size_t      ksize;
@@ -21,7 +29,9 @@ typedef struct {
     EntryState  state;
 } RHEntry;
 
-typedef struct Hash
+typedef struct Hash Hash;
+
+struct Hash 
 {
 	size_t          CAPACITY;
     size_t          SIZE;
@@ -35,44 +45,47 @@ typedef struct Hash
         easier to use.
     */
 
-    #define INSERT(this, key, value)    ( (this)->insert( (this), (key), (value) ) )
-    void
+    const int
     (*insert)
         (Hash *this, 
         const void *key,
-        const size_t size,
-        const void *value);
+        const size_t ksize,
+        const void *value,
+        const size_t vsize);
     
-    #define DELETE(this, key)           ( (this)->delete( (this), (key) ) )
     void
     (*delete)
         (Hash *this,
         const void *key,
         const size_t size);
     
-    #define this(key)                   ( (this)->fetch( (this), (key) ) )
-    const void
+    const RHEntry
     *(*fetch)
         (Hash *this,
         const void *key,
         const size_t size);
 
-    #define DISPLAY(this)               ( (this)->display( (this) ) ) // Debugging purposes
     void
     (*display)
-        (Hash *this);
+        (Hash *this,
+        DisplayType type);
     
-    #define RESIZE(this)                ( (this)->resize( (this) ) )
-    void 
+    const int
     (*resize)
         (Hash *this);
     
-    #define DESTROY(this)               ( (this)->destroy( (this )) )
     void
     (*destroy)
         (Hash *this);
     
-}	Hash;
+};
+
+#define INSERT(this, key, ksize, value, vsize) ((this)->insert((this), (key), (ksize), (value), (vsize)))
+#define DELETE(this, key, size)                ((this)->delete((this), (key), (size)))
+#define FETCH(this, key, size)                 ((this)->fetch((this), (key), (size)))
+#define DISPLAY(this, type)                    ((this)->display((this), (type))) // Debugging purposes
+#define RESIZE(this)                           ((this)->resize((this)))
+#define DESTROY(this)                          ((this)->destroy((this)))
 
 // Methods
 
@@ -80,7 +93,7 @@ typedef struct Hash
     Hash Function
 */
 
-size_t
+const size_t
 hashfn
     (const void *key,
     const size_t size);
@@ -90,19 +103,20 @@ hashfn
     Binded methods
 */
 
-size_t 
+const size_t 
 Hfind_slot
     (Hash *this, 
     const void *key,
     const size_t size);
 
 
-void
+const int
 Hinsert
     (Hash *this, 
     const void *key,
-    const size_t size,
-    const void *value);
+    const size_t ksize,
+    const void *value,
+    const size_t vsize);
 
 
 void
@@ -112,7 +126,7 @@ Hdelete
     const size_t size);
 
 
-const void
+const RHEntry
 *Hfetch
     (Hash *this, 
     const void *key,
@@ -121,10 +135,11 @@ const void
 
 void
 Hdisplay
-    (Hash *this);
+    (Hash *this,
+    DisplayType type);
 
 
-int 
+const int 
 Hresize
     (Hash *this);
 

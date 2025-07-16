@@ -1,4 +1,5 @@
 #include "../include/CPU.h"
+#include "../include/Hash.h"
 
 short int Exit;
 

@@ -9,7 +9,8 @@ SRC     := source/main.c \
 			source/SemanticP.c\
 			source/M_Unit.c\
 			source/BA_Unit.c\
-			source/MLearning.c
+			source/MLearning.c\
+			source/Hash.c
 
 #FLAGS
 
@@ -31,3 +32,4 @@ M_Unit_FLAG				:=
 MLearning_FLAG				:=
 SemanticP_FLAG				:=
 IntentP_FLAG				:=
+Hash_FLAG 					:=
