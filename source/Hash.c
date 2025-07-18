@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <setjmp.h> // Satanic things
 #include <math.h>
+#include <assert.h>
 
 // Methods
 
