@@ -8,7 +8,7 @@ u_OUT					:= Dana
 u_MKDIR				:= @mkdir -p $(OBJ_DIR)
 
 # WINDOWS
-w_CXX					:= x86_64-w64-mingw32-gcc
+w_CXX					:= @x86_64-w64-mingw32-gcc
 w_OUT					:= Dana.exe
 w_MKDIR				:= @if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
 
@@ -29,7 +29,7 @@ endif
 
 # LINK
 all: $(OBJ)
-		$($(PLAT)_CXX) $(OBJ) -o $($(PLAT)_OUT)
+	@$($(PLAT)_CXX) $(OBJ) -o $($(PLAT)_OUT)
 
 # COMPILE
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -42,7 +42,6 @@ endif
 	@mod=$(call get_module,$<); \
 	$($(PLAT)_CXX) $(CFLAGS) -I$(mod) $($(PLAT)_FLAGS) $($(mod)_FLAG) -c $< -o $@
 
-
 # CLEAN
 u_CLEAN		:=	rm -r
 w_CLEAN		:=	rmdir /S /Q
@@ -52,7 +51,7 @@ clean:
 	@$($(PLAT)_MKDIR)/000_dummy 
 # This dummy file ^^^^^^^^^^ is just to avoid error when calling make clean again
 
-print:
+print-src-obj:
 	@echo SRC = $(SRC)
 	@echo OBJ = $(OBJ)
 

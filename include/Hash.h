@@ -30,9 +30,7 @@ typedef struct {
   EntryState  state;
 } RHEntry;
 
-typedef struct Hash Hash;
-
-struct Hash 
+typedef struct 
 {
   size_t    CAPACITY;
   size_t    SIZE;
@@ -79,7 +77,7 @@ struct Hash
   (*destroy)
     (Hash *this);
   
-};
+} Hash;
 
 #define INSERT(this, key, ksize, value, vsize) ((this)->insert((this), (key), (ksize), (value), (vsize)))
 #define DELETE(this, key, size)        ((this)->delete((this), (key), (size)))
@@ -88,28 +86,9 @@ struct Hash
 #define RESIZE(this)               ((this)->resize((this)))
 #define DESTROY(this)              ((this)->destroy((this)))
 
-// Methods
-
-/*
-  Hash Function
-*/
-
-size_t
-hashfn
-  (const void *key,
-  const size_t size);
-
-
 /*
   Binded methods
 */
-
-size_t 
-Hfind_slot
-  (Hash *this,
-  const void *key,
-  const size_t size);
-
 
 int
 Hinsert
@@ -153,5 +132,4 @@ Hdestroy
 Hash
 *Hinit
   (void);
-
 
