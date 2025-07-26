@@ -70,40 +70,40 @@
 
 const char*
 Txt
-	(const char* text);
+  (const char* text);
 
 void 
 PrtError
-	(const char *msg,
-	int64_t error_code);
+  (const char *msg,
+  int64_t error_code);
 
 void 
 PrtDbgError
-	(const char *msg,
-	const char* error_msg);
-	
+  (const char *msg,
+  const char* error_msg);
+  
 // == MEMORY MANEGEMENT ==
 
 void 
 *PtrVerify
-	(void *ptr,
-	const char* msg,
-	const char* error_msg);
+  (void *ptr,
+  const char* msg,
+  const char* error_msg);
 
 char 
 *AllocCharPtr
-	(size_t nmemb);
+  (size_t nmemb);
 
 char 
 *ReallocCharPtr
-	(size_t nmemb, char *ptr);
+  (size_t nmemb, char *ptr);
 
 char 
 **AllocCharPPtr
-	(size_t nmemb);
+  (size_t nmemb);
 
 char 
 **ReallocCharPPtr
-	(size_t nmemb, char **ptr);
-	
+  (size_t nmemb, char **ptr);
+  
 #endif

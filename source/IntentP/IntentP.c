@@ -2,8 +2,8 @@
 
 Intent_info
 GetIntent
-	(LI_info InputInfo)
+  (LI_info InputInfo)
 {
-	
-	return (Intent_info){};
+  
+  return (Intent_info){};
 }

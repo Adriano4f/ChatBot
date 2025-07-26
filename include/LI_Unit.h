@@ -26,28 +26,28 @@ extern int LettersGraph[255][255];
 
 typedef struct LI_info
 {
-	char** Tokens;
-	char* Input;
+  char** Tokens;
+  char* Input;
 } LI_info;
 
 // Functions
 
 LI_info
 HandleInput
-	(int8_t linked, 
-	const void* process);
+  (int8_t linked, 
+  const void* process);
 
 LI_info
 Linked
-	(const void* process);
+  (const void* process);
 
 int 
 GetInput
-	(void);
+  (void);
 
 char
 **Tokenise
-	(void);
+  (void);
 
 
 #endif

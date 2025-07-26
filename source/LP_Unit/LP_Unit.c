@@ -3,10 +3,10 @@
 
 int
 ProcessInput
-	(LI_info InputInfo)
+  (LI_info InputInfo)
 {
-	
-	
-	return 0;
+  
+  
+  return 0;
 }
-	
+  

@@ -1,35 +1,25 @@
-#SRC
-SRC     := source/main.c \
-			source/CPU.c \
-			source/LP_Unit.c\
-			source/LG_Unit.c\
-			source/LI_Unit.c\
-			source/General_Utility.c\
-			source/IntentP.c\
-			source/SemanticP.c\
-			source/M_Unit.c\
-			source/BA_Unit.c\
-			source/MLearning.c\
-			source/Hash.c
+#SRC & INC
+
+SRC_DIR			:=	source
+OBJ_DIR			:=	build
+INCLUDE_DIR	:=	include
+
+MODULES	:=	$(subst /,,$(subst source/,,$(filter %/,$(wildcard source/*/))))
+
+MAIN_SRC := $(SRC_DIR)/main.c
+MODULE_SRCS	:=	$(foreach m,$(MODULES),$(wildcard $(SRC_DIR)/$(m)/*.c))
+
+SRC	:=	$(MAIN_SRC) $(MODULE_SRCS)
 
 #FLAGS
 
 #COMMON
-FLAGS = -O2 -std=c17 -Wall -I$(INCLUDE_DIR)
-u_FLAGS := -m64 -unicode
-w_FLAGS := -D_WIN32
+CFLAGS	:=	-O2 -std=c17 -Wall -I$(INCLUDE_DIR)
+u_FLAGS	:=	-m64 -unicode
+w_FLAGS	:=	-D_WIN32
 
-# CONVENTION: NAME YOUR FLAGS LIKE cfilename_FLAG, OTHERWISE IT WON'T COMPILE.
+# FLAGS ARE NAMED LIKE modulename_FLAG, THEY ARE APPLIED PER MODULE
 
-main_FLAG				:= 
-General_Utility_FLAG			:=
-CPU_FLAG				:=
-BA_unit_FLAG				:=
-LG_Unit_FLAG				:=
-LI_Unit_FLAG				:=
-LP_Unit_FLAG				:=
-M_Unit_FLAG				:=
-MLearning_FLAG				:=
-SemanticP_FLAG				:=
-IntentP_FLAG				:=
-Hash_FLAG 					:=
+General_Utility_FLAG	:=
+CPU_FLAG							:=
+Hash_FLAG							:=

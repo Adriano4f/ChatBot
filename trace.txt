@@ -1,0 +1,240 @@
+50427 execve("/usr/bin/make", ["make"], 0x7ffd1570ed68 /* 92 vars */) = 0
+50428 execve("/usr/bin/uname", ["uname", "-s"], 0x559ee2fbdee0 /* 97 vars */) = 0
+50428 +++ exited with 0 +++
+50429 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50429 +++ exited with 0 +++
+50430 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50430 +++ exited with 0 +++
+50431 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50432 execve("/usr/bin/mod", ["mod", ":="], 0x55b3b54327d0 /* 97 vars */) = 0
+50432 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x55dc7c4ed6b0 /* 97 vars */) = 0
+50435 +++ exited with 1 +++
+50433 +++ exited with 1 +++
+50432 +++ exited with 1 +++
+50431 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50432, si_uid=1000, si_status=1, si_utime=33 /* 0.33 s */, si_stime=2 /* 0.02 s */} ---
+50431 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/main.c", "-o", "build/main.o"], 0x55b3b5433c60 /* 97 vars */) = 0
+50441 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/main.c", "-quiet", "-dumpdir", "build/", "-dumpbase", "main.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccnqEylc.s"], 0x5601e7c25e40 /* 101 vars */) = 0
+50441 +++ exited with 0 +++
+50431 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50441, si_uid=1000, si_status=0, si_utime=2 /* 0.02 s */, si_stime=1 /* 0.01 s */} ---
+50442 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/main.o", "/tmp/ccnqEylc.s"], 0x5601e7c25e40 /* 101 vars */) = 0
+50442 +++ exited with 0 +++
+50431 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50442, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50431 +++ exited with 0 +++
+50443 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50443 +++ exited with 0 +++
+50444 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/CPU/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50444 +++ exited with 0 +++
+50445 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50446 execve("/usr/bin/mod", ["mod", ":="], 0x5596363127e0 /* 97 vars */) = 0
+50446 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x55571ed456b0 /* 97 vars */) = 0
+50447 +++ exited with 1 +++
+50448 +++ exited with 1 +++
+50446 +++ exited with 1 +++
+50445 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50446, si_uid=1000, si_status=1, si_utime=31 /* 0.31 s */, si_stime=2 /* 0.02 s */} ---
+50445 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/CPU/CPU.c", "-o", "build/CPU/CPU.o"], 0x559636313c70 /* 97 vars */) = 0
+50449 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/CPU/CPU.c", "-quiet", "-dumpdir", "build/CPU/", "-dumpbase", "CPU.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccNZyjXf.s"], 0x558add689e40 /* 101 vars */) = 0
+50449 +++ exited with 0 +++
+50445 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50449, si_uid=1000, si_status=0, si_utime=5 /* 0.05 s */, si_stime=2 /* 0.02 s */} ---
+50453 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/CPU/CPU.o", "/tmp/ccNZyjXf.s"], 0x558add689e40 /* 101 vars */) = 0
+50453 +++ exited with 0 +++
+50445 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50453, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50445 +++ exited with 0 +++
+50460 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50460 +++ exited with 0 +++
+50461 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/LP_Unit/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50461 +++ exited with 0 +++
+50462 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50463 execve("/usr/bin/mod", ["mod", ":="], 0x557a1c2347f0 /* 97 vars */) = 0
+50463 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x565525b0a6b0 /* 97 vars */) = 0
+50465 +++ exited with 1 +++
+50466 +++ exited with 1 +++
+50463 +++ exited with 1 +++
+50462 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50463, si_uid=1000, si_status=1, si_utime=32 /* 0.32 s */, si_stime=2 /* 0.02 s */} ---
+50462 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/LP_Unit/LP_Unit.c", "-o", "build/LP_Unit/LP_Unit.o"], 0x557a1c235c80 /* 97 vars */) = 0
+50467 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/LP_Unit/LP_Unit.c", "-quiet", "-dumpdir", "build/LP_Unit/", "-dumpbase", "LP_Unit.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccJ2M4B9.s"], 0x561f3c315e40 /* 101 vars */) = 0
+50467 +++ exited with 0 +++
+50462 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50467, si_uid=1000, si_status=0, si_utime=2 /* 0.02 s */, si_stime=1 /* 0.01 s */} ---
+50468 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/LP_Unit/LP_Unit.o", "/tmp/ccJ2M4B9.s"], 0x561f3c315e40 /* 101 vars */) = 0
+50468 +++ exited with 0 +++
+50462 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50468, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50462 +++ exited with 0 +++
+50469 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50469 +++ exited with 0 +++
+50470 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/LG_Unit/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50470 +++ exited with 0 +++
+50471 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50472 execve("/usr/bin/mod", ["mod", ":="], 0x5570eee787f0 /* 97 vars */) = 0
+50472 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x55cfa6ae76b0 /* 97 vars */) = 0
+50474 +++ exited with 1 +++
+50473 +++ exited with 1 +++
+50472 +++ exited with 1 +++
+50471 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50472, si_uid=1000, si_status=1, si_utime=33 /* 0.33 s */, si_stime=3 /* 0.03 s */} ---
+50471 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/LG_Unit/LG_Unit.c", "-o", "build/LG_Unit/LG_Unit.o"], 0x5570eee79c80 /* 97 vars */) = 0
+50475 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/LG_Unit/LG_Unit.c", "-quiet", "-dumpdir", "build/LG_Unit/", "-dumpbase", "LG_Unit.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/cc8GQD7S.s"], 0x55ad16660e40 /* 101 vars */) = 0
+50475 +++ exited with 0 +++
+50471 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50475, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50476 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/LG_Unit/LG_Unit.o", "/tmp/cc8GQD7S.s"], 0x55ad16660e40 /* 101 vars */) = 0
+50476 +++ exited with 0 +++
+50471 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50476, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50471 +++ exited with 0 +++
+50477 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50477 +++ exited with 0 +++
+50478 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/LI_Unit/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50478 +++ exited with 0 +++
+50479 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50480 execve("/usr/bin/mod", ["mod", ":="], 0x558ac60d77f0 /* 97 vars */) = 0
+50480 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x56449d5346b0 /* 97 vars */) = 0
+50482 +++ exited with 1 +++
+50481 +++ exited with 1 +++
+50480 +++ exited with 1 +++
+50479 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50480, si_uid=1000, si_status=1, si_utime=29 /* 0.29 s */, si_stime=3 /* 0.03 s */} ---
+50479 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/LI_Unit/LI_Unit.c", "-o", "build/LI_Unit/LI_Unit.o"], 0x558ac60d8c80 /* 97 vars */) = 0
+50492 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/LI_Unit/LI_Unit.c", "-quiet", "-dumpdir", "build/LI_Unit/", "-dumpbase", "LI_Unit.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccrvRALv.s"], 0x55a98e000e40 /* 101 vars */) = 0
+50492 +++ exited with 0 +++
+50479 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50492, si_uid=1000, si_status=0, si_utime=10 /* 0.10 s */, si_stime=2 /* 0.02 s */} ---
+50493 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/LI_Unit/LI_Unit.o", "/tmp/ccrvRALv.s"], 0x55a98e000e40 /* 101 vars */) = 0
+50493 +++ exited with 0 +++
+50479 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50493, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50479 +++ exited with 0 +++
+50494 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50494 +++ exited with 0 +++
+50495 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/General_Utility/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50495 +++ exited with 0 +++
+50496 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50497 execve("/usr/bin/mod", ["mod", ":="], 0x5563dfdea810 /* 97 vars */) = 0
+50497 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x55e11112b6b0 /* 97 vars */) = 0
+50498 +++ exited with 1 +++
+50499 +++ exited with 1 +++
+50497 +++ exited with 1 +++
+50496 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50497, si_uid=1000, si_status=1, si_utime=31 /* 0.31 s */, si_stime=2 /* 0.02 s */} ---
+50496 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/General_Utility/General_U"..., "-o", "build/General_Utility/General_Ut"...], 0x5563dfdebca0 /* 97 vars */) = 0
+50500 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/General_Utility/General_U"..., "-quiet", "-dumpdir", "build/General_Utility/", "-dumpbase", "General_Utility.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccdBvPcD.s"], 0x55e566943e40 /* 101 vars */) = 0
+50500 +++ exited with 0 +++
+50496 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50500, si_uid=1000, si_status=0, si_utime=8 /* 0.08 s */, si_stime=2 /* 0.02 s */} ---
+50501 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/General_Utility/General_Ut"..., "/tmp/ccdBvPcD.s"], 0x55e566943e40 /* 101 vars */) = 0
+50501 +++ exited with 0 +++
+50496 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50501, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50496 +++ exited with 0 +++
+50502 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50502 +++ exited with 0 +++
+50503 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/IntentP/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50503 +++ exited with 0 +++
+50504 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50505 execve("/usr/bin/mod", ["mod", ":="], 0x5574c16b67f0 /* 97 vars */) = 0
+50505 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x55b10b16b6b0 /* 97 vars */) = 0
+50506 +++ exited with 1 +++
+50507 +++ exited with 1 +++
+50505 +++ exited with 1 +++
+50504 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50505, si_uid=1000, si_status=1, si_utime=30 /* 0.30 s */, si_stime=1 /* 0.01 s */} ---
+50504 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/IntentP/IntentP.c", "-o", "build/IntentP/IntentP.o"], 0x5574c16b7c80 /* 97 vars */) = 0
+50508 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/IntentP/IntentP.c", "-quiet", "-dumpdir", "build/IntentP/", "-dumpbase", "IntentP.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccseMQhY.s"], 0x55876eb63e40 /* 101 vars */) = 0
+50508 +++ exited with 0 +++
+50504 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50508, si_uid=1000, si_status=0, si_utime=2 /* 0.02 s */, si_stime=1 /* 0.01 s */} ---
+50509 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/IntentP/IntentP.o", "/tmp/ccseMQhY.s"], 0x55876eb63e40 /* 101 vars */) = 0
+50509 +++ exited with 0 +++
+50504 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50509, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50504 +++ exited with 0 +++
+50510 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50510 +++ exited with 0 +++
+50511 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/SemanticP/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50511 +++ exited with 0 +++
+50512 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50513 execve("/usr/bin/mod", ["mod", ":="], 0x55db193b77f0 /* 97 vars */) = 0
+50513 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x5651c6ac16b0 /* 97 vars */) = 0
+50515 +++ exited with 1 +++
+50514 +++ exited with 1 +++
+50513 +++ exited with 1 +++
+50512 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50513, si_uid=1000, si_status=1, si_utime=29 /* 0.29 s */, si_stime=4 /* 0.04 s */} ---
+50512 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/SemanticP/SemanticP.c", "-o", "build/SemanticP/SemanticP.o"], 0x55db193b8c80 /* 97 vars */) = 0
+50516 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/SemanticP/SemanticP.c", "-quiet", "-dumpdir", "build/SemanticP/", "-dumpbase", "SemanticP.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccoP2KBs.s"], 0x5596977a7e40 /* 101 vars */) = 0
+50516 +++ exited with 0 +++
+50512 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50516, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50517 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/SemanticP/SemanticP.o", "/tmp/ccoP2KBs.s"], 0x5596977a7e40 /* 101 vars */) = 0
+50517 +++ exited with 0 +++
+50512 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50517, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50512 +++ exited with 0 +++
+50518 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50518 +++ exited with 0 +++
+50519 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/M_Unit/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50519 +++ exited with 0 +++
+50520 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50521 execve("/usr/bin/mod", ["mod", ":="], 0x559caf5767e0 /* 97 vars */) = 0
+50521 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x557d5f3396b0 /* 97 vars */) = 0
+50523 +++ exited with 1 +++
+50522 +++ exited with 1 +++
+50521 +++ exited with 1 +++
+50520 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50521, si_uid=1000, si_status=1, si_utime=29 /* 0.29 s */, si_stime=1 /* 0.01 s */} ---
+50520 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/M_Unit/M_Unit.c", "-o", "build/M_Unit/M_Unit.o"], 0x559caf577c70 /* 97 vars */) = 0
+50524 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/M_Unit/M_Unit.c", "-quiet", "-dumpdir", "build/M_Unit/", "-dumpbase", "M_Unit.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/cc64gBrX.s"], 0x55f26aeb8e40 /* 101 vars */) = 0
+50524 +++ exited with 0 +++
+50520 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50524, si_uid=1000, si_status=0, si_utime=1 /* 0.01 s */, si_stime=0} ---
+50525 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/M_Unit/M_Unit.o", "/tmp/cc64gBrX.s"], 0x55f26aeb8e40 /* 101 vars */) = 0
+50525 +++ exited with 0 +++
+50520 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50525, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50520 +++ exited with 0 +++
+50526 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50526 +++ exited with 0 +++
+50527 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/BA_Unit/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50527 +++ exited with 0 +++
+50528 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50529 execve("/usr/bin/mod", ["mod", ":="], 0x5566ed1e87f0 /* 97 vars */) = 0
+50529 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x564d9fcf76b0 /* 97 vars */) = 0
+50531 +++ exited with 1 +++
+50530 +++ exited with 1 +++
+50529 +++ exited with 1 +++
+50528 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50529, si_uid=1000, si_status=1, si_utime=31 /* 0.31 s */, si_stime=3 /* 0.03 s */} ---
+50528 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/BA_Unit/BA_Unit.c", "-o", "build/BA_Unit/BA_Unit.o"], 0x5566ed1e9c80 /* 97 vars */) = 0
+50542 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/BA_Unit/BA_Unit.c", "-quiet", "-dumpdir", "build/BA_Unit/", "-dumpbase", "BA_Unit.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/cciGEH97.s"], 0x55e7e1f44e40 /* 101 vars */) = 0
+50542 +++ exited with 0 +++
+50528 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50542, si_uid=1000, si_status=0, si_utime=0, si_stime=1 /* 0.01 s */} ---
+50543 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/BA_Unit/BA_Unit.o", "/tmp/cciGEH97.s"], 0x55e7e1f44e40 /* 101 vars */) = 0
+50543 +++ exited with 0 +++
+50528 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50543, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50528 +++ exited with 0 +++
+50544 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50544 +++ exited with 0 +++
+50545 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/MLearning/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50545 +++ exited with 0 +++
+50546 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50547 execve("/usr/bin/mod", ["mod", ":="], 0x559c098f37f0 /* 97 vars */) = 0
+50547 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x5607c5cda6b0 /* 97 vars */) = 0
+50549 +++ exited with 1 +++
+50548 +++ exited with 1 +++
+50547 +++ exited with 1 +++
+50546 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50547, si_uid=1000, si_status=1, si_utime=32 /* 0.32 s */, si_stime=2 /* 0.02 s */} ---
+50546 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/MLearning/MLearning.c", "-o", "build/MLearning/MLearning.o"], 0x559c098f4c80 /* 97 vars */) = 0
+50550 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/MLearning/MLearning.c", "-quiet", "-dumpdir", "build/MLearning/", "-dumpbase", "MLearning.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/cc7t9iYl.s"], 0x561655208e40 /* 101 vars */) = 0
+50550 +++ exited with 0 +++
+50546 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50550, si_uid=1000, si_status=0, si_utime=0, si_stime=1 /* 0.01 s */} ---
+50551 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/MLearning/MLearning.o", "/tmp/cc7t9iYl.s"], 0x561655208e40 /* 101 vars */) = 0
+50551 +++ exited with 0 +++
+50546 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50551, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50546 +++ exited with 0 +++
+50552 execve("/usr/bin/mkdir", ["mkdir", "-p", "build"], 0x559ee2fd7000 /* 97 vars */) = 0
+50552 +++ exited with 0 +++
+50553 execve("/usr/bin/mkdir", ["mkdir", "-p", "build/Hash/"], 0x559ee2fd7000 /* 97 vars */) = 0
+50553 +++ exited with 0 +++
+50554 execve("/bin/sh", ["/bin/sh", "-c", "mod\t:=\t;\\\ngcc -O2 -std=c17 -Wall"...], 0x559ee2fd7000 /* 97 vars */) = 0
+50555 execve("/usr/bin/mod", ["mod", ":="], 0x55c27aa117e0 /* 97 vars */) = 0
+50555 execve("/usr/bin/mono", ["/usr/bin/mono", "/usr/lib/mono/4.5/mod.exe", ":="], 0x55653296d6b0 /* 97 vars */) = 0
+50557 +++ exited with 1 +++
+50556 +++ exited with 1 +++
+50555 +++ exited with 1 +++
+50554 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50555, si_uid=1000, si_status=1, si_utime=30 /* 0.30 s */, si_stime=3 /* 0.03 s */} ---
+50554 execve("/usr/bin/gcc", ["gcc", "-O2", "-std=c17", "-Wall", "-Iinclude", "-I", "-m64", "-unicode", "-c", "source/Hash/Hash.c", "-o", "build/Hash/Hash.o"], 0x55c27aa12c70 /* 97 vars */) = 0
+50558 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-quiet", "-I", "include", "-I", "-m64", "source/Hash/Hash.c", "-quiet", "-dumpdir", "build/Hash/", "-dumpbase", "Hash.c", "-dumpbase-ext", ".c", "-mtune=generic", "-march=x86-64", "-O2", "-Wall", "-std=c17", "-foffload-options=-fno-stack-pro"..., "-fcf-protection", "-foffload-options=-fcf-protectio"..., "-o", "/tmp/ccDPkxqM.s"], 0x55e5e0bcfe40 /* 101 vars */) = 0
+50558 +++ exited with 0 +++
+50554 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50558, si_uid=1000, si_status=0, si_utime=25 /* 0.25 s */, si_stime=2 /* 0.02 s */} ---
+50568 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-I", "include", "-I", "-m64", "--64", "-o", "build/Hash/Hash.o", "/tmp/ccDPkxqM.s"], 0x55e5e0bcfe40 /* 101 vars */) = 0
+50568 +++ exited with 0 +++
+50554 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50568, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50554 +++ exited with 0 +++
+50569 execve("/usr/bin/gcc", ["gcc", "build/main.o", "build/CPU/CPU.o", "build/LP_Unit/LP_Unit.o", "build/LG_Unit/LG_Unit.o", "build/LI_Unit/LI_Unit.o", "build/General_Utility/General_Ut"..., "build/IntentP/IntentP.o", "build/SemanticP/SemanticP.o", "build/M_Unit/M_Unit.o", "build/BA_Unit/BA_Unit.o", "build/MLearning/MLearning.o", "build/Hash/Hash.o", "-o", "Dana"], 0x559ee2fd7000 /* 97 vars */) = 0
+50570 execve("/usr/libexec/gcc/x86_64-pc-linux-gnu/15/collect2", ["/usr/libexec/gcc/x86_64-pc-linux"..., "-plugin", "/usr/libexec/gcc/x86_64-pc-linux"..., "-plugin-opt=/usr/libexec/gcc/x86"..., "-plugin-opt=-fresolution=/tmp/cc"..., "-plugin-opt=-pass-through=-lgcc", "-plugin-opt=-pass-through=-lgcc_"..., "-plugin-opt=-pass-through=-lc", "-plugin-opt=-pass-through=-lgcc", "-plugin-opt=-pass-through=-lgcc_"..., "--eh-frame-hdr", "-m", "elf_x86_64", "-dynamic-linker", "/lib64/ld-linux-x86-64.so.2", "-pie", "-z", "now", "-o", "Dana", "/usr/lib/gcc/x86_64-pc-linux-gnu"..., "/usr/lib/gcc/x86_64-pc-linux-gnu"..., "/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/lib/../lib64", "-L/usr/lib/../lib64", "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/lib", "-L/usr/lib", "build/main.o", ...], 0x5563b5d37e40 /* 104 vars */) = 0
+50571 execve("/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/ld", ["/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-plugin", "/usr/libexec/gcc/x86_64-pc-linux"..., "-plugin-opt=/usr/libexec/gcc/x86"..., "-plugin-opt=-fresolution=/tmp/cc"..., "-plugin-opt=-pass-through=-lgcc", "-plugin-opt=-pass-through=-lgcc_"..., "-plugin-opt=-pass-through=-lc", "-plugin-opt=-pass-through=-lgcc", "-plugin-opt=-pass-through=-lgcc_"..., "--eh-frame-hdr", "-m", "elf_x86_64", "-dynamic-linker", "/lib64/ld-linux-x86-64.so.2", "-pie", "-z", "now", "-o", "Dana", "/usr/lib/gcc/x86_64-pc-linux-gnu"..., "/usr/lib/gcc/x86_64-pc-linux-gnu"..., "/usr/lib/gcc/x86_64-pc-linux-gnu"..., "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/lib/../lib64", "-L/usr/lib/../lib64", "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/usr/lib/gcc/x86_64-pc-linux-g"..., "-L/lib", "-L/usr/lib", "build/main.o", ...], 0x7ffec6c61000 /* 104 vars */) = 0
+50571 +++ exited with 0 +++
+50570 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50571, si_uid=1000, si_status=0, si_utime=2 /* 0.02 s */, si_stime=2 /* 0.02 s */} ---
+50570 +++ exited with 0 +++
+50569 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=50570, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+50569 +++ exited with 0 +++
+50427 +++ exited with 0 +++

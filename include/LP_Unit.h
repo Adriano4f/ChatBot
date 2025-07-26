@@ -6,6 +6,6 @@
 
 int
 ProcessInput
-	(LI_info InputInfo);
+  (LI_info InputInfo);
 
 #endif
