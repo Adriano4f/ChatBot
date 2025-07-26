@@ -1,18 +1,5 @@
 #include "Hash_internal.h"
 
-// STD
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <math.h>
-#include <assert.h>
-
-// Methods
-
-/*
-  Hash Function
-*/
-
 size_t
 hashfn
   (const void *key,

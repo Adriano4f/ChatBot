@@ -30,7 +30,8 @@ typedef struct {
   EntryState  state;
 } RHEntry;
 
-typedef struct 
+typedef struct Hash Hash;
+struct Hash
 {
   size_t    CAPACITY;
   size_t    SIZE;
@@ -77,7 +78,7 @@ typedef struct
   (*destroy)
     (Hash *this);
   
-} Hash;
+};
 
 #define INSERT(this, key, ksize, value, vsize) ((this)->insert((this), (key), (ksize), (value), (vsize)))
 #define DELETE(this, key, size)        ((this)->delete((this), (key), (size)))

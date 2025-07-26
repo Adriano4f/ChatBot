@@ -14,6 +14,12 @@ Hfind_slot
   const void *key,
   const size_t size);
 
+bool 
+Hcompare_key_entry
+  (const void *key1,
+  const size_t size,
+  const RHEntry entry);
+
 int 
 Hrehash
   (Hash *this,
@@ -28,3 +34,4 @@ Hdisplay_int
 const int
 Hdisplay_int64
   (Hash *this);
+

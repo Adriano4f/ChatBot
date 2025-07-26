@@ -1,6 +1,6 @@
 #include "Hash_internal.h"
 
-
+#include <assert.h>
 #include <setjmp.h> // Satanic things
 
 size_t 
@@ -13,7 +13,7 @@ Hfind_slot
   if ( setjmp(err) )
   {
     Hresize(this);
-  }   
+  }
 
   assert((this->CAPACITY & (this->CAPACITY - 1)) == 0 && "CAPACITY must be power of two, what did you do");
   const size_t o_idx = hashfn(key, size) & (this->CAPACITY-1); // Mod operation is really slow, and if I don't micro optimise I get stressed
@@ -39,7 +39,7 @@ Hfind_slot
     ++idx;
   }
   if (SIZE_MAX == toret)
-    longjmp(err, 1);
+    longjmp(err, 1); // TODO: change this longjmp, worst thing in this file
   
   return toret;
 }

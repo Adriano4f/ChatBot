@@ -28,6 +28,8 @@
       "valarray": "c",
       "hash_internal.h": "c",
       "stdio.h": "c",
-      "stdlib.h": "c"
+      "stdlib.h": "c",
+      "setjmp.h": "c",
+      "assert.h": "c"
     }
 }
