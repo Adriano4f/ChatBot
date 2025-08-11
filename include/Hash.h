@@ -26,7 +26,7 @@ typedef struct {
   size_t    ksize;
   void    *value;
   size_t    vsize;
-  int     PSL;    // Probe Sequence Length
+  int       PSL; // Probe Sequence Length
   EntryState  state;
 } RHEntry;
 

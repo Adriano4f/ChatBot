@@ -90,20 +90,20 @@ void
   const char* msg,
   const char* error_msg);
 
-char 
-*AllocCharPtr
+void 
+*AllocPtr
   (size_t nmemb);
 
-char 
-*ReallocCharPtr
-  (size_t nmemb, char *ptr);
+void
+*ReallocPtr
+  (size_t nmemb, void *ptr);
 
-char 
-**AllocCharPPtr
+void 
+**AllocPPtr
   (size_t nmemb);
 
-char 
-**ReallocCharPPtr
-  (size_t nmemb, char **ptr);
+void 
+**ReallocPPtr
+  (size_t nmemb, void **ptr);
   
 #endif

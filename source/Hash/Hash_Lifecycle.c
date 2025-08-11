@@ -1,5 +1,7 @@
 #include "Hash_internal.h"
+  #include "GUtils.h"
 
+// STD
 #include <stdlib.h>
 
 int 
@@ -46,7 +48,7 @@ Hash
 *Hinit
   (void)
 {
-  Hash *ret = (Hash *)malloc( sizeof(Hash) );
+  Hash *ret = (Hash *)AllocPtr( sizeof(Hash) );
 
   size_t CAPACITY = 8;
   size_t SIZE = 0;
@@ -55,7 +57,7 @@ Hash
   ret->SIZE = SIZE;
   ret->LOAD_FACTOR = SIZE*1000/CAPACITY;
 
-  ret->TABLE = (RHEntry *)calloc( CAPACITY, sizeof(RHEntry) );
+  ret->TABLE = (RHEntry *)calloc( CAPACITY, sizeof(RHEntry) ); // TODO: create a calloc wrapper for error handling
 
   ret->insert = Hinsert;
   ret->delete = Hdelete;

@@ -1,5 +1,5 @@
-#include "../include/LI_Unit.h"
-  #include "../include/General_Utility.h"
+#include "LI_Unit.h"
+  #include "GUtils.h"
 
 
 // STD
@@ -94,45 +94,45 @@ char
   (void)
 {
   size_t sz = 500;
-  char **Token = AllocCharPPtr(sz);
+  char **Token = (char **)AllocPPtr(sz);
   char *first = strtok(GlobalInputBuffer, DELIMITERS);
   
   if ( !first ) 
     return NULL;
-  Token[0] = AllocCharPtr(BUFFER_SIZE); // BUFFER_SIZE == 512
-  strcpy( Token[0], first );
-  Token[0] = ReallocCharPtr( strlen( Token[0]), Token[0] );
+  Token[0] = (char *)AllocPtr (BUFFER_SIZE * sizeof(char)); // BUFFER_SIZE == 512
+  strcpy ( Token[0], first );
+  Token[0] = (char *)ReallocPtr ( strlen( Token[0]), Token[0] );
   
   char **tmpPPtr;
   char *tmp;
   int i = 1;
-  while ( (tmp = strtok( NULL, DELIMITERS ) ) != NULL) 
+  while ( (tmp = strtok( NULL, DELIMITERS ) ) != NULL ) 
   {
-    Token[i] = AllocCharPtr(strlen(tmp) + 5);
-    strcpy(Token[i], tmp);
+    Token[i] = (char *)AllocPtr ( (strlen(tmp) + 5) * sizeof(char) );
+    strcpy ( Token[i], tmp );
     ++i;
     
-    printf("%s%s%s\t",
-      Txt(CYAN),
+    printf ("%s%s%s\t",
+      Txt ( CYAN ),
       Token[i-1],
-      Txt(CRESET) ); // Debug
+      Txt ( CRESET ) ); // Debug
     
-    if(i < sz-100)
+    if ( i < sz-100 )
       continue;
     
     // Resize
     sz += 500;
-    if( (tmpPPtr = ReallocCharPPtr( sz, Token ) ) != NULL)
+    if ( (tmpPPtr = (char **)ReallocPPtr ( (sz) * sizeof(char), (void **)Token ) ) != NULL )
       Token = tmpPPtr;
     else
     {
-      PrtDbgError( "Unexpected Error.", "LI -> Tokenise" );
+      PrtDbgError ( "Unexpected Error.", "LI -> Tokenise" );
       return NULL;
     }
     
   }
   
-  if( (tmpPPtr = ReallocCharPPtr( i+5, Token ) ) != NULL)
+  if ( (tmpPPtr = (char **)ReallocPPtr( (i+5) * sizeof(char), (void **)Token ) ) != NULL )
       Token = tmpPPtr;
   Token[i] = NULL;
   return Token;
