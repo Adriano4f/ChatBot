@@ -1,0 +1,2 @@
+/usr/bin/ar qc libUtils.a CMakeFiles/Utils.dir/source/Utils/Alloc/Allocation.c.o CMakeFiles/Utils.dir/source/Utils/Console/Console.c.o CMakeFiles/Utils.dir/source/Utils/Debug/Debug.c.o CMakeFiles/Utils.dir/source/Utils/Hash/Access.c.o CMakeFiles/Utils.dir/source/Utils/Hash/Display.c.o CMakeFiles/Utils.dir/source/Utils/Hash/Hash.c.o CMakeFiles/Utils.dir/source/Utils/Hash/Lifecycle.c.o CMakeFiles/Utils.dir/source/Utils/Hash/Modify.c.o CMakeFiles/Utils.dir/source/Utils/Hash/Utils.c.o
+/usr/bin/ranlib libUtils.a

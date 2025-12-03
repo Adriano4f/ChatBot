@@ -1,4 +1,4 @@
-#include "../include/CPU.h"
+#include "Core/CPU/CPU.h"
 
 int 
 main

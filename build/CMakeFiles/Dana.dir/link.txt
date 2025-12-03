@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/Dana.dir/link.d CMakeFiles/Dana.dir/source/main.c.o -o Dana  libCore.a libUtils.a

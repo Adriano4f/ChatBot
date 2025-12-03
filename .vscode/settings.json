@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "stdint.h": "c",
+    "stddef.h": "c",
+    "li_unit.h": "c",
+    "hash.h": "c"
+  }
+}
