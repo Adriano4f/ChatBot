@@ -4,22 +4,15 @@
 #include <stdint.h>
 #include <stddef.h>
 
-void 
-PrtError
-  (const char *msg,
-  int64_t error_code);
+void
+PrtError (const char *msg, int64_t error_code);
 
-void 
-PrtDbgError
-  (const char *msg,
-  const char* error_msg);
-  
-// == MEMORY MANEGEMENT ==
+void
+PrtDbgError (const char *msg, const char* error_msg);
 
-void 
-*PtrVerify
-  (void *ptr,
-  const char* msg,
-  const char* error_msg);
+/* == MEMORY MANAGEMENT == */
+
+void *
+PtrVerify (void *ptr, const char* msg, const char* error_msg);
   
 #endif

@@ -6,19 +6,15 @@
 #include <stdlib.h>
 
 
-void 
-PrtError
-  (const char *msg,
-  int64_t error_code)
+void
+PrtError (const char *msg, int64_t error_code)
 {
   printf("%s%s ERROR CODE: %s%ld%s\n",
           Txt(RED), msg, Txt(MAGENTA), error_code, Txt(CRESET) );
 }
 
-void 
-PrtDbgError
-  (const char *msg,
-  const char* error_msg)
+void
+PrtDbgError (const char *msg, const char* error_msg)
 {
   printf("%s%s %s%s%s",
       Txt(RED), msg, Txt(YELLOW), error_msg, Txt(CRESET) );
@@ -26,11 +22,8 @@ PrtDbgError
 
 // == MEMORY MANAGEMENT ==
 
-void 
-*PtrVerify
-  (void *ptr,
-  const char* msg,
-  const char* error_msg)
+void *
+PtrVerify (void *ptr, const char* msg, const char* error_msg)
 {
   if ( ptr == NULL )
   {

@@ -1,9 +1,7 @@
 #include "Utils/Hash/Internal.h"
 
 size_t
-hashfn
-  (const void *key,
-  const size_t size)
+hashfn (const void *key, const size_t size)
 {
   /*
     Per byte FNV-1a hashing function

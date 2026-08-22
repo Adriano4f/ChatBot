@@ -4,8 +4,7 @@
 short int Exit;
 
 int
-CentralProcess
-  (void)
+CentralProcess (void)
 {
   char msg[] = "droga";
   char vl[] = "Cocaina";

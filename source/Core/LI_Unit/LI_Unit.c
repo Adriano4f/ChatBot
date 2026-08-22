@@ -15,9 +15,7 @@ int LettersGraph[255][255];
 
 
 LI_info
-HandleInput
-  (int8_t linked, 
-  const void* process)
+HandleInput (int8_t linked, const void* process)
 {
   if(linked)
   {
@@ -57,8 +55,7 @@ HandleInput
 
 
 LI_info
-Linked
-  (const void* process)
+Linked (const void* process)
 {
   return (LI_info){ NULL, NULL };
 }
@@ -96,9 +93,8 @@ GetInput
 }
 
 
-char
-**Tokenise
-  (void)
+char **
+Tokenise (void)
 {
   size_t sz = 500;
   char **Token = (char **)AllocPPtr(sz);

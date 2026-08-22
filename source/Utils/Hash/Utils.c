@@ -3,11 +3,8 @@
 #include <assert.h>
 #include <setjmp.h> // Satanic things
 
-size_t 
-Hfind_slot
-  (Hash *self, 
-  const void *key,
-  const  size_t size)
+size_t
+Hfind_slot (Hash *self, const void *key, const size_t size)
 {
   jmp_buf err;
   if ( setjmp(err) )
@@ -16,7 +13,7 @@ Hfind_slot
   }
 
   assert((self->CAPACITY & (self->CAPACITY - 1)) == 0 && "CAPACITY must be power of two, what did you do");
-  const size_t o_idx = hashfn(key, size) & (self->CAPACITY-1); // Mod operation is really slow, and if I don't micro optimise I get stressed
+  const size_t o_idx = hashfn(key, size) & (self->CAPACITY-1); // hashfn mod capacity (with capacity being a pow of 2)
   size_t idx = o_idx;
   size_t toret = SIZE_MAX;
 
@@ -37,19 +34,16 @@ Hfind_slot
       break;
     }
     ++idx;
-  }
-  if (SIZE_MAX == toret)
+    if (SIZE_MAX == toret)
     longjmp(err, 1); // TODO: change self longjmp, worst thing in self file
+  }
   
   return toret;
 }
 
 
-bool 
-Hcompare_key_entry
-  (const void *key1,
-  const size_t size,
-  const RHEntry entry)
+bool
+Hcompare_key_entry (const void *key1, const size_t size, const RHEntry entry)
 {
   if ( size != entry.ksize )
     return 0;
@@ -65,10 +59,8 @@ Hcompare_key_entry
 }
 
 
-int 
-Hrehash
-  (Hash *self,
-  RHEntry *TABLE)
+int
+Hrehash (Hash *self, RHEntry *TABLE)
 {
   int nsuccess = 0;
   for ( size_t i = 0; i < (self->CAPACITY); ++i )

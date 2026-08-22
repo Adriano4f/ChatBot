@@ -8,8 +8,7 @@
   
 extern short int Exit; // -> Exit Flag for demarking exit of the program
 
-int 
-CentralProcess
-  (void);
+int
+CentralProcess (void);
 
 #endif

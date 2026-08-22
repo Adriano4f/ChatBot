@@ -4,9 +4,7 @@
 #include <setjmp.h> // Satanic things
 
 void
-Hdisplay // Debug purposes
-  (Hash *self, 
-  DisplayType type)
+Hdisplay (Hash *self, DisplayType type)
 {
   printf("Capacity: %zu\nSize: %zu\n", self->CAPACITY, self->SIZE);
 
@@ -29,8 +27,7 @@ Hdisplay // Debug purposes
 }
 
 int
-Hdisplay_char
-  (Hash *self)
+Hdisplay_char (Hash *self)
 {
   jmp_buf err;
 
@@ -57,8 +54,7 @@ Hdisplay_char
 }
 
 int
-Hdisplay_int
-  (Hash *self)
+Hdisplay_int (Hash *self)
 {
   jmp_buf err;
 
@@ -84,8 +80,7 @@ Hdisplay_int
 
 
 int
-Hdisplay_int64
-  (Hash *self)
+Hdisplay_int64 (Hash *self)
 {
   jmp_buf err;
 

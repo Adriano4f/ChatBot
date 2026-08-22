@@ -36,16 +36,13 @@ LI_info
 HandleInput (int8_t linked, const void* process);
 
 LI_info
-Linked
-  (const void* process);
+Linked (const void* process);
 
-int 
-GetInput
-  (void);
+int
+GetInput (void);
 
-char
-**Tokenise
-  (void);
+char **
+Tokenise (void);
 
 
 #endif

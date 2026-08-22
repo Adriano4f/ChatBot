@@ -3,9 +3,8 @@
 // STD
 #include <stdlib.h>
 
-int 
-Hresize
-  (Hash *self)
+int
+Hresize (Hash *self)
 {   
   size_t OLD_CAPACITY = self->CAPACITY;
   size_t NEW_CAPACITY = self->CAPACITY*2;
@@ -35,17 +34,15 @@ Hresize
 
 
 void
-Hdestroy
-  (Hash *self)
+Hdestroy (Hash *self)
 {
   free(self->TABLE);
   free(self);
 }
 
 
-Hash
-*Hinit
-  (void)
+Hash *
+Hinit (void)
 {
   Hash *ret = (Hash *)AllocPtr( sizeof(Hash) );
 

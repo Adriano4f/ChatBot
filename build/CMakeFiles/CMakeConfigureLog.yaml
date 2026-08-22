@@ -20,6 +20,7 @@ events:
     names:
       - "uname"
     candidate_directories:
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -30,13 +31,12 @@ events:
       - "/usr/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
       - "/bin/"
     searched_directories:
+      - "/home/Gaybrel/.local/bin/uname"
       - "/home/Gaybrel/.dotnet/uname"
       - "/usr/lib/wine-vanilla-10.0/bin/uname"
       - "/opt/wine-vanilla-10.0/bin/uname"
@@ -47,11 +47,13 @@ events:
     found: "/usr/bin/uname"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -60,18 +62,16 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "message-v1"
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      The system is: Linux - 6.16.7-gentoo-x86_64 - x86_64
+      The system is: Linux - 6.18.9-gentoo-x86_64 - x86_64
   -
     kind: "find-v1"
     backtrace:
@@ -93,6 +93,7 @@ events:
       - "make"
       - "smake"
     candidate_directories:
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -103,12 +104,11 @@ events:
       - "/usr/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     searched_directories:
+      - "/home/Gaybrel/.local/bin/gmake"
       - "/home/Gaybrel/.dotnet/gmake"
       - "/usr/lib/wine-vanilla-10.0/bin/gmake"
       - "/opt/wine-vanilla-10.0/bin/gmake"
@@ -119,11 +119,13 @@ events:
     found: "/usr/bin/gmake"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -132,11 +134,9 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -163,6 +163,7 @@ events:
       - "icx"
       - "clang"
     candidate_directories:
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -173,12 +174,11 @@ events:
       - "/usr/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     searched_directories:
+      - "/home/Gaybrel/.local/bin/cc"
       - "/home/Gaybrel/.dotnet/cc"
       - "/usr/lib/wine-vanilla-10.0/bin/cc"
       - "/opt/wine-vanilla-10.0/bin/cc"
@@ -189,11 +189,13 @@ events:
     found: "/usr/bin/cc"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -202,11 +204,9 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -234,11 +234,13 @@ events:
     found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -247,11 +249,9 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "message-v1"
     backtrace:
@@ -272,12 +272,12 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
       
       The C compiler identification is GNU, found in:
-        /home/Gaybrel/Code/Projects/AI/build/CMakeFiles/4.1.3/CompilerIdC/a.out
+        /home/Gaybrel/Code/Projects/AI/build/CMakeFiles/4.2.3/CompilerIdC/a.out
       
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -295,6 +295,7 @@ events:
       - "ar"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -304,19 +305,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/ar"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -325,15 +326,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -351,6 +350,7 @@ events:
       - "ranlib"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -360,19 +360,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/ranlib"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -381,15 +381,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -407,6 +405,7 @@ events:
       - "strip"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -416,19 +415,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/strip"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -437,15 +436,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -463,6 +460,7 @@ events:
       - "ld"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -472,19 +470,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/ld"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -493,15 +491,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -519,6 +515,7 @@ events:
       - "nm"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -528,19 +525,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/nm"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -549,15 +546,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -575,6 +570,7 @@ events:
       - "objdump"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -584,19 +580,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/objdump"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -605,15 +601,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -631,6 +625,7 @@ events:
       - "objcopy"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -640,19 +635,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/objcopy"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -661,15 +656,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -687,6 +680,7 @@ events:
       - "readelf"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -696,19 +690,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/readelf"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -717,15 +711,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -743,6 +735,7 @@ events:
       - "dlltool"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -752,13 +745,12 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     searched_directories:
       - "/usr/bin/dlltool"
+      - "/home/Gaybrel/.local/bin/dlltool"
       - "/home/Gaybrel/.dotnet/dlltool"
       - "/usr/lib/wine-vanilla-10.0/bin/dlltool"
       - "/opt/wine-vanilla-10.0/bin/dlltool"
@@ -767,14 +759,20 @@ events:
       - "/usr/local/sbin/dlltool"
       - "/usr/local/bin/dlltool"
       - "/opt/bin/dlltool"
-    found: "/usr/lib/llvm/21/bin/dlltool"
+      - "/usr/lib/llvm/21/bin/dlltool"
+      - "/usr/lib/llvm/18/bin/dlltool"
+      - "/etc/eselect/wine/bin/dlltool"
+      - "/usr/lib64/opencascade/bin/dlltool"
+    found: false
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -783,15 +781,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -809,6 +805,7 @@ events:
       - "addr2line"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -818,19 +815,19 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     found: "/usr/bin/addr2line"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -839,15 +836,13 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
@@ -865,6 +860,7 @@ events:
       - "tapi"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -874,13 +870,12 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     searched_directories:
       - "/usr/bin/tapi"
+      - "/home/Gaybrel/.local/bin/tapi"
       - "/home/Gaybrel/.dotnet/tapi"
       - "/usr/lib/wine-vanilla-10.0/bin/tapi"
       - "/opt/wine-vanilla-10.0/bin/tapi"
@@ -890,19 +885,19 @@ events:
       - "/usr/local/bin/tapi"
       - "/opt/bin/tapi"
       - "/usr/lib/llvm/21/bin/tapi"
-      - "/usr/lib/llvm/20/bin/tapi"
       - "/usr/lib/llvm/18/bin/tapi"
       - "/etc/eselect/wine/bin/tapi"
       - "/usr/lib64/opencascade/bin/tapi"
-      - "/var/lib/snapd/snap/bin/tapi"
     found: false
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -911,11 +906,9 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -940,6 +933,7 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -949,13 +943,12 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     searched_directories:
       - "/usr/bin/gcc-ar-15.2"
+      - "/home/Gaybrel/.local/bin/gcc-ar-15.2"
       - "/home/Gaybrel/.dotnet/gcc-ar-15.2"
       - "/usr/lib/wine-vanilla-10.0/bin/gcc-ar-15.2"
       - "/opt/wine-vanilla-10.0/bin/gcc-ar-15.2"
@@ -965,12 +958,11 @@ events:
       - "/usr/local/bin/gcc-ar-15.2"
       - "/opt/bin/gcc-ar-15.2"
       - "/usr/lib/llvm/21/bin/gcc-ar-15.2"
-      - "/usr/lib/llvm/20/bin/gcc-ar-15.2"
       - "/usr/lib/llvm/18/bin/gcc-ar-15.2"
       - "/etc/eselect/wine/bin/gcc-ar-15.2"
       - "/usr/lib64/opencascade/bin/gcc-ar-15.2"
-      - "/var/lib/snapd/snap/bin/gcc-ar-15.2"
       - "/usr/bin/gcc-ar-15"
+      - "/home/Gaybrel/.local/bin/gcc-ar-15"
       - "/home/Gaybrel/.dotnet/gcc-ar-15"
       - "/usr/lib/wine-vanilla-10.0/bin/gcc-ar-15"
       - "/opt/wine-vanilla-10.0/bin/gcc-ar-15"
@@ -980,12 +972,11 @@ events:
       - "/usr/local/bin/gcc-ar-15"
       - "/opt/bin/gcc-ar-15"
       - "/usr/lib/llvm/21/bin/gcc-ar-15"
-      - "/usr/lib/llvm/20/bin/gcc-ar-15"
       - "/usr/lib/llvm/18/bin/gcc-ar-15"
       - "/etc/eselect/wine/bin/gcc-ar-15"
       - "/usr/lib64/opencascade/bin/gcc-ar-15"
-      - "/var/lib/snapd/snap/bin/gcc-ar-15"
       - "/usr/bin/gcc-ar15"
+      - "/home/Gaybrel/.local/bin/gcc-ar15"
       - "/home/Gaybrel/.dotnet/gcc-ar15"
       - "/usr/lib/wine-vanilla-10.0/bin/gcc-ar15"
       - "/opt/wine-vanilla-10.0/bin/gcc-ar15"
@@ -995,19 +986,19 @@ events:
       - "/usr/local/bin/gcc-ar15"
       - "/opt/bin/gcc-ar15"
       - "/usr/lib/llvm/21/bin/gcc-ar15"
-      - "/usr/lib/llvm/20/bin/gcc-ar15"
       - "/usr/lib/llvm/18/bin/gcc-ar15"
       - "/etc/eselect/wine/bin/gcc-ar15"
       - "/usr/lib64/opencascade/bin/gcc-ar15"
-      - "/var/lib/snapd/snap/bin/gcc-ar15"
     found: "/usr/bin/gcc-ar"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -1016,11 +1007,9 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1045,6 +1034,7 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "/usr/bin/"
+      - "/home/Gaybrel/.local/bin/"
       - "/home/Gaybrel/.dotnet/"
       - "/usr/lib/wine-vanilla-10.0/bin/"
       - "/opt/wine-vanilla-10.0/bin/"
@@ -1054,13 +1044,12 @@ events:
       - "/usr/local/bin/"
       - "/opt/bin/"
       - "/usr/lib/llvm/21/bin/"
-      - "/usr/lib/llvm/20/bin/"
       - "/usr/lib/llvm/18/bin/"
       - "/etc/eselect/wine/bin/"
       - "/usr/lib64/opencascade/bin/"
-      - "/var/lib/snapd/snap/bin/"
     searched_directories:
       - "/usr/bin/gcc-ranlib-15.2"
+      - "/home/Gaybrel/.local/bin/gcc-ranlib-15.2"
       - "/home/Gaybrel/.dotnet/gcc-ranlib-15.2"
       - "/usr/lib/wine-vanilla-10.0/bin/gcc-ranlib-15.2"
       - "/opt/wine-vanilla-10.0/bin/gcc-ranlib-15.2"
@@ -1070,12 +1059,11 @@ events:
       - "/usr/local/bin/gcc-ranlib-15.2"
       - "/opt/bin/gcc-ranlib-15.2"
       - "/usr/lib/llvm/21/bin/gcc-ranlib-15.2"
-      - "/usr/lib/llvm/20/bin/gcc-ranlib-15.2"
       - "/usr/lib/llvm/18/bin/gcc-ranlib-15.2"
       - "/etc/eselect/wine/bin/gcc-ranlib-15.2"
       - "/usr/lib64/opencascade/bin/gcc-ranlib-15.2"
-      - "/var/lib/snapd/snap/bin/gcc-ranlib-15.2"
       - "/usr/bin/gcc-ranlib-15"
+      - "/home/Gaybrel/.local/bin/gcc-ranlib-15"
       - "/home/Gaybrel/.dotnet/gcc-ranlib-15"
       - "/usr/lib/wine-vanilla-10.0/bin/gcc-ranlib-15"
       - "/opt/wine-vanilla-10.0/bin/gcc-ranlib-15"
@@ -1085,12 +1073,11 @@ events:
       - "/usr/local/bin/gcc-ranlib-15"
       - "/opt/bin/gcc-ranlib-15"
       - "/usr/lib/llvm/21/bin/gcc-ranlib-15"
-      - "/usr/lib/llvm/20/bin/gcc-ranlib-15"
       - "/usr/lib/llvm/18/bin/gcc-ranlib-15"
       - "/etc/eselect/wine/bin/gcc-ranlib-15"
       - "/usr/lib64/opencascade/bin/gcc-ranlib-15"
-      - "/var/lib/snapd/snap/bin/gcc-ranlib-15"
       - "/usr/bin/gcc-ranlib15"
+      - "/home/Gaybrel/.local/bin/gcc-ranlib15"
       - "/home/Gaybrel/.dotnet/gcc-ranlib15"
       - "/usr/lib/wine-vanilla-10.0/bin/gcc-ranlib15"
       - "/opt/wine-vanilla-10.0/bin/gcc-ranlib15"
@@ -1100,19 +1087,19 @@ events:
       - "/usr/local/bin/gcc-ranlib15"
       - "/opt/bin/gcc-ranlib15"
       - "/usr/lib/llvm/21/bin/gcc-ranlib15"
-      - "/usr/lib/llvm/20/bin/gcc-ranlib15"
       - "/usr/lib/llvm/18/bin/gcc-ranlib15"
       - "/etc/eselect/wine/bin/gcc-ranlib15"
       - "/usr/lib64/opencascade/bin/gcc-ranlib15"
-      - "/var/lib/snapd/snap/bin/gcc-ranlib15"
     found: "/usr/bin/gcc-ranlib"
     search_context:
       ENV{PATH}:
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/home/Gaybrel/.config/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/home/Gaybrel/.local/bin"
         - "/home/Gaybrel/.dotnet"
         - "/usr/lib/wine-vanilla-10.0/bin"
         - "/opt/wine-vanilla-10.0/bin"
@@ -1121,11 +1108,9 @@ events:
         - "/usr/bin"
         - "/opt/bin"
         - "/usr/lib/llvm/21/bin"
-        - "/usr/lib/llvm/20/bin"
         - "/usr/lib/llvm/18/bin"
         - "/etc/eselect/wine/bin"
         - "/usr/lib64/opencascade/bin"
-        - "/var/lib/snapd/snap/bin"
   -
     kind: "try_compile-v1"
     backtrace:
@@ -1135,8 +1120,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-bkZA6S"
-      binary: "/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-bkZA6S"
+      source: "/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-MyQWLK"
+      binary: "/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-MyQWLK"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -1145,26 +1130,26 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-bkZA6S'
+        Change Dir: '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-MyQWLK'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_670ba/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_670ba.dir/build.make CMakeFiles/cmTC_670ba.dir/build
-        gmake[1]: Entering directory '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-bkZA6S'
-        Building C object CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -v -o CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3e22c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3e22c.dir/build.make CMakeFiles/cmTC_3e22c.dir/build
+        gmake[1]: Entering directory '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-MyQWLK'
+        Building C object CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         OFFLOAD_TARGET_NAMES=nvptx-none
         OFFLOAD_TARGET_DEFAULT=1
         Target: x86_64-pc-linux-gnu
-        Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251108-r1/work/gcc-15-20251108/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c,c++,fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251108-r1 p2' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32,m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet
+        Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251122/work/gcc-15-20251122/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c,c++,fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251122 p3' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32,m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
-        gcc version 15.2.1 20251108 (Gentoo 15.2.1_p20251108-r1 p2) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_670ba.dir/'
-         /usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_670ba.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -foffload-options=-fno-stack-protector -fcf-protection -foffload-options=-fcf-protection=none -o /tmp/ccfnmCsb.s
-        GNU C23 (Gentoo 15.2.1_p20251108-r1 p2) version 15.2.1 20251108 (x86_64-pc-linux-gnu)
-        	compiled by GNU C version 15.2.1 20251108, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version none
+        gcc version 15.2.1 20251122 (Gentoo 15.2.1_p20251122 p3) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3e22c.dir/'
+         /usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_3e22c.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -foffload-options=-fno-stack-protector -fcf-protection -foffload-options=-fcf-protection=none -o /tmp/ccENAkYr.s
+        GNU C23 (Gentoo 15.2.1_p20251122 p3) version 15.2.1 20251122 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 15.2.1 20251122, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version none
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         ignoring nonexistent directory "/usr/local/include"
         ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15/include-fixed"
@@ -1174,35 +1159,35 @@ events:
          /usr/lib/gcc/x86_64-pc-linux-gnu/15/include
          /usr/include
         End of search list.
-        Compiler executable checksum: a25e151165f9b6c4757c6bf301bf60a5
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_670ba.dir/'
-         /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o /tmp/ccfnmCsb.s
+        Compiler executable checksum: 75eb9d53f1691d64c365af5d03b97be8
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3e22c.dir/'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o /tmp/ccENAkYr.s
         GNU assembler version 2.45.1 (x86_64-pc-linux-gnu) using BFD version (Gentoo 2.45.1 p1) 2.45.1
         COMPILER_PATH=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_670ba
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_670ba.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_3e22c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3e22c.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper
         OFFLOAD_TARGET_NAMES=nvptx-none
         OFFLOAD_TARGET_DEFAULT=1
         Target: x86_64-pc-linux-gnu
-        Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251108-r1/work/gcc-15-20251108/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c,c++,fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251108-r1 p2' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32,m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet
+        Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251122/work/gcc-15-20251122/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c,c++,fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251122 p3' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32,m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
-        gcc version 15.2.1 20251108 (Gentoo 15.2.1_p20251108-r1 p2) 
+        gcc version 15.2.1 20251122 (Gentoo 15.2.1_p20251122 p3) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_670ba' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_670ba.'
-         /usr/libexec/gcc/x86_64-pc-linux-gnu/15/collect2 -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnFW1Qz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_670ba /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o
-        collect2 version 15.2.1 20251108
-        /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/ld -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnFW1Qz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_670ba /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3e22c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3e22c.'
+         /usr/libexec/gcc/x86_64-pc-linux-gnu/15/collect2 -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBxYye4.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_3e22c /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o
+        collect2 version 15.2.1 20251122
+        /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/ld -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBxYye4.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_3e22c /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o
         GNU ld (Gentoo 2.45.1 p1) 2.45.1
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_670ba' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_670ba.'
-        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o -o cmTC_670ba
-        gmake[1]: Leaving directory '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-bkZA6S'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3e22c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3e22c.'
+        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o -o cmTC_3e22c
+        gmake[1]: Leaving directory '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-MyQWLK'
         
       exitCode: 0
   -
@@ -1232,27 +1217,27 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-bkZA6S']
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-MyQWLK']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_670ba/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_670ba.dir/build.make CMakeFiles/cmTC_670ba.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-bkZA6S']
-        ignore line: [Building C object CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3e22c/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_3e22c.dir/build.make CMakeFiles/cmTC_3e22c.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/Gaybrel/Code/Projects/AI/build/CMakeFiles/CMakeScratch/TryCompile-MyQWLK']
+        ignore line: [Building C object CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
         ignore line: [OFFLOAD_TARGET_DEFAULT=1]
         ignore line: [Target: x86_64-pc-linux-gnu]
-        ignore line: [Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251108-r1/work/gcc-15-20251108/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c c++ fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251108-r1 p2' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32 m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet]
+        ignore line: [Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251122/work/gcc-15-20251122/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c c++ fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251122 p3' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32 m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet]
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
-        ignore line: [gcc version 15.2.1 20251108 (Gentoo 15.2.1_p20251108-r1 p2) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_670ba.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_670ba.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -foffload-options=-fno-stack-protector -fcf-protection -foffload-options=-fcf-protection=none -o /tmp/ccfnmCsb.s]
-        ignore line: [GNU C23 (Gentoo 15.2.1_p20251108-r1 p2) version 15.2.1 20251108 (x86_64-pc-linux-gnu)]
-        ignore line: [	compiled by GNU C version 15.2.1 20251108  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version none]
+        ignore line: [gcc version 15.2.1 20251122 (Gentoo 15.2.1_p20251122 p3) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3e22c.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-pc-linux-gnu/15/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_3e22c.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -foffload-options=-fno-stack-protector -fcf-protection -foffload-options=-fcf-protection=none -o /tmp/ccENAkYr.s]
+        ignore line: [GNU C23 (Gentoo 15.2.1_p20251122 p3) version 15.2.1 20251122 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 15.2.1 20251122  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version none]
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [ignoring nonexistent directory "/usr/local/include"]
         ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15/include-fixed"]
@@ -1262,34 +1247,34 @@ events:
         ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15/include]
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
-        ignore line: [Compiler executable checksum: a25e151165f9b6c4757c6bf301bf60a5]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_670ba.dir/']
-        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o /tmp/ccfnmCsb.s]
+        ignore line: [Compiler executable checksum: 75eb9d53f1691d64c365af5d03b97be8]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3e22c.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o /tmp/ccENAkYr.s]
         ignore line: [GNU assembler version 2.45.1 (x86_64-pc-linux-gnu) using BFD version (Gentoo 2.45.1 p1) 2.45.1]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_670ba]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_670ba.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_3e22c]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3e22c.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
         ignore line: [OFFLOAD_TARGET_DEFAULT=1]
         ignore line: [Target: x86_64-pc-linux-gnu]
-        ignore line: [Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251108-r1/work/gcc-15-20251108/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c c++ fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251108-r1 p2' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32 m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet]
+        ignore line: [Configured with: /var/tmp/portage/sys-devel/gcc-15.2.1_p20251122/work/gcc-15-20251122/configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --bindir=/usr/x86_64-pc-linux-gnu/gcc-bin/15 --includedir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include --datadir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15 --mandir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/man --infodir=/usr/share/gcc-data/x86_64-pc-linux-gnu/15/info --with-gxx-include-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15 --disable-silent-rules --disable-dependency-tracking --with-python-dir=/share/gcc-data/x86_64-pc-linux-gnu/15/python --enable-languages=c c++ fortran --enable-obsolete --enable-secureplt --disable-werror --with-system-zlib --enable-nls --without-included-gettext --disable-libunwind-exceptions --enable-checking=release --with-bugurl=https://bugs.gentoo.org/ --with-pkgversion='Gentoo 15.2.1_p20251122 p3' --with-gcc-major-version-only --enable-libstdcxx-time --enable-lto --disable-libstdcxx-pch --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-multilib --with-multilib-list=m32 m64 --disable-fixed-point --enable-targets=all --enable-offload-defaulted --enable-offload-targets=nvptx-none --enable-libgomp --disable-libssp --disable-libada --enable-cet --disable-systemtap --disable-valgrind-annotations --disable-vtable-verify --disable-libvtv --with-zstd --without-isl --enable-default-pie --enable-host-pie --enable-host-bind-now --enable-default-ssp --disable-fixincludes --with-gxx-libcxx-include-dir=/usr/include/c++/v1 --with-build-config=bootstrap-cet]
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
-        ignore line: [gcc version 15.2.1 20251108 (Gentoo 15.2.1_p20251108-r1 p2) ]
+        ignore line: [gcc version 15.2.1 20251122 (Gentoo 15.2.1_p20251122 p3) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/15/:/usr/libexec/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_670ba' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_670ba.']
-        link line: [ /usr/libexec/gcc/x86_64-pc-linux-gnu/15/collect2 -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnFW1Qz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_670ba /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3e22c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3e22c.']
+        link line: [ /usr/libexec/gcc/x86_64-pc-linux-gnu/15/collect2 -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBxYye4.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_3e22c /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o]
           arg [/usr/libexec/gcc/x86_64-pc-linux-gnu/15/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccnFW1Qz.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccBxYye4.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -1303,7 +1288,7 @@ events:
           arg [-pie] ==> ignore
           arg [-znow] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_670ba] ==> ignore
+          arg [cmTC_3e22c] ==> ignore
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o]
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o]
@@ -1316,7 +1301,7 @@ events:
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -1330,8 +1315,8 @@ events:
           arg [--pop-state] ==> ignore
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o]
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o]
-        ignore line: [collect2 version 15.2.1 20251108]
-        ignore line: [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/ld -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnFW1Qz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_670ba /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_670ba.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o]
+        ignore line: [collect2 version 15.2.1 20251122]
+        ignore line: [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/ld -plugin /usr/libexec/gcc/x86_64-pc-linux-gnu/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-pc-linux-gnu/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBxYye4.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -o cmTC_3e22c /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3e22c.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o]
         linker tool for 'C': /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/bin/ld
         collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/Scrt1.o] ==> [/usr/lib64/Scrt1.o]
         collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
@@ -1353,7 +1338,7 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/usr/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "/usr/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
       - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"

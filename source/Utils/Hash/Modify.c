@@ -1,12 +1,8 @@
 #include "Utils/Hash/Internal.h"
 
 int
-Hinsert
-  (Hash *self,
-  const void *key,
-  const size_t ksize,
-  const void *value,
-  const size_t vsize)
+Hinsert (Hash *self, const void *key, const size_t ksize,
+         const void *value, const size_t vsize)
 {
   const size_t idx = Hfind_slot(self, key, ksize);
   if ( (size_t)-1 == idx )
@@ -25,10 +21,7 @@ Hinsert
 }
 
 void
-Hdelete
-  (Hash *self, 
-  const void *key,
-  const size_t size)
+Hdelete (Hash *self, const void *key, const size_t size)
 {
   /*
     When deleting a bucket or slot (making it available) only RHEntry.state and RHEntry.ksize

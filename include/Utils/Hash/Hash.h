@@ -126,46 +126,27 @@ struct Hash
 */
 
 int
-Hinsert
-  (Hash *this, 
-  const void *key,
-  const size_t ksize,
-  const void *value,
-  const size_t vsize);
-
+Hinsert (Hash *this, const void *key, const size_t ksize,
+         const void *value, const size_t vsize);
 
 void
-Hdelete
-  (Hash *this,
-  const void *key,
-  const size_t size);
+Hdelete (Hash *this, const void *key, const size_t size);
 
+const RHEntry *
+Hfetch (Hash *this, const void *key, const size_t size);
 
-const RHEntry
-*Hfetch
-  (Hash *this,
-  const void *key,
-  const size_t size);
-
-int 
-Hresize
-  (Hash *this);
-
+int
+Hresize (Hash *this);
 
 void
-Hdestroy
-  (Hash *this);
+Hdestroy (Hash *this);
 
-
-Hash
-*Hinit
-  (void);
+Hash *
+Hinit (void);
 
 #ifdef DEBUG
 void
-Hdisplay
-  (Hash *this,
-  DisplayType type);
+Hdisplay (Hash *this, DisplayType type);
 #endif
 
 #endif

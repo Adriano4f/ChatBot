@@ -4,9 +4,8 @@
 #include <stdlib.h>
 
 
-void
-*AllocPtr
-  (size_t nmemb)
+void *
+AllocPtr (size_t nmemb)
 {
   void *tmp = malloc(nmemb);
   return PtrVerify
@@ -18,9 +17,8 @@ void
 }
 
 
-void 
-*ReallocPtr
-  (size_t nmemb, void *ptr)
+void *
+ReallocPtr (size_t nmemb, void *ptr)
 {
   void *tmp = realloc(ptr, nmemb);
   return PtrVerify
@@ -32,9 +30,8 @@ void
 }
 
 
-void 
-**AllocPPtr
-  (size_t nmemb)
+void **
+AllocPPtr (size_t nmemb)
 {
   void **tmp = malloc(nmemb);
   return PtrVerify
@@ -46,9 +43,8 @@ void
 }
 
 
-void 
-**ReallocPPtr
-  (size_t nmemb, void **ptr)
+void **
+ReallocPPtr (size_t nmemb, void **ptr)
 {
   void **tmp = realloc(ptr, nmemb);
   return PtrVerify
