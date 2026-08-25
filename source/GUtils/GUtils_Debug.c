@@ -16,7 +16,7 @@ PrtError
   (const char *msg,
   int64_t error_code)
 {
-  printf("%s%s ERROR CODE: %s%ld%s\n",
+  fprintf(stderr, "%s%s ERROR CODE: %s%ld%s\n",
           Txt(RED), msg, Txt(MAGENTA), error_code, Txt(CRESET) );
 }
 
@@ -25,7 +25,7 @@ PrtDbgError
   (const char *msg,
   const char* error_msg)
 {
-  printf("%s%s %s%s%s",
+  fprintf(stderr, "%s%s %s%s%s\n",
       Txt(RED), msg, Txt(YELLOW), error_msg, Txt(CRESET) );
 }
 

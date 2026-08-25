@@ -95,6 +95,10 @@ void
   (size_t nmemb);
 
 void
+*CallocPtr
+  (size_t nmemb, size_t size);
+
+void
 *ReallocPtr
   (size_t nmemb, void *ptr);
 

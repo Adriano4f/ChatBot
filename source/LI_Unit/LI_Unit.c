@@ -24,32 +24,35 @@ HandleInput
   int err = GetInput();
   switch(err)
   {
-    // TODO: add error handling for each case
     case EOF_ERROR:
-      // Print that program will terminate because of End Of File
-      break;
+      // Nothing left to read, the caller is expected to terminate
+      return (LI_info){ NULL, NULL, EOF_ERROR };
     case INPUT_READ_FAILED_LI:
-      // Ask for input again and return (LI_info){NULL, NULL} -> returning {NULL, NULL} will make Input being handled again
-      break;
+      // Recoverable, the caller asks for input again
+      return (LI_info){ NULL, NULL, INPUT_READ_FAILED_LI };
     case UNKNOWN_ERROR:
-      // Idk, do something or ask ChatGPT
-      break;
+      PrtDbgError( "Input could not be read.", "LI -> HandleInput" );
+      return (LI_info){ NULL, NULL, UNKNOWN_ERROR };
   }
   
   
   if( strlen(GlobalInputBuffer) <= 1 )
-    return (LI_info){ NULL, GlobalInputBuffer };
+    return (LI_info){ NULL, GlobalInputBuffer, SUCESS };
+  
+  // Copied before tokenising, strtok writes into GlobalInputBuffer
+  char *Input = (char *)AllocPtr( strlen(GlobalInputBuffer) + 1 );
+  if ( NULL == Input )
+    return (LI_info){ NULL, NULL, ALLOC_FAILED_LI };
+  strcpy( Input, GlobalInputBuffer );
   
   char** Tokens = Tokenise();
-  
-  LI_info info = 
+  if ( NULL == Tokens )
   {
-    Tokens,
-    (char *)malloc( strlen(GlobalInputBuffer) * sizeof(char) + 1 )
-  };
-  strcpy( info.Input, GlobalInputBuffer );
+    free(Input);
+    return (LI_info){ NULL, NULL, TOKENISE_FAILED_LI };
+  }
   
-  return info;
+  return (LI_info){ Tokens, Input, SUCESS };
 }
 
 
@@ -57,7 +60,7 @@ LI_info
 Linked
   (const void* process)
 {
-  return (LI_info){ NULL, NULL };
+  return (LI_info){ NULL, NULL, SUCESS };
 }
 
 
@@ -85,7 +88,18 @@ GetInput
     Txt(CYAN),
     GlobalInputBuffer,
     Txt(CRESET) ); // Debug
-  return 0;
+  return SUCESS;
+}
+
+
+static void
+FreeTokens
+  (char **Tokens,
+  size_t count)
+{
+  for ( size_t i = 0; i < count; ++i )
+    free(Tokens[i]);
+  free(Tokens);
 }
 
 
@@ -93,22 +107,37 @@ char
 **Tokenise
   (void)
 {
-  size_t sz = 500;
-  char **Token = (char **)AllocPPtr(sz);
+  size_t sz = 500; // Amount of slots, not bytes
+  char **Token = (char **)AllocPPtr( sz * sizeof(char *) );
+  if ( NULL == Token )
+    return NULL;
+
   char *first = strtok(GlobalInputBuffer, DELIMITERS);
   
   if ( !first ) 
+  {
+    free(Token);
     return NULL;
-  Token[0] = (char *)AllocPtr (BUFFER_SIZE * sizeof(char)); // BUFFER_SIZE == 512
+  }
+  Token[0] = (char *)AllocPtr ( strlen(first) + 1 );
+  if ( NULL == Token[0] )
+  {
+    free(Token);
+    return NULL;
+  }
   strcpy ( Token[0], first );
-  Token[0] = (char *)ReallocPtr ( strlen( Token[0]), Token[0] );
   
   char **tmpPPtr;
   char *tmp;
-  int i = 1;
+  size_t i = 1;
   while ( (tmp = strtok( NULL, DELIMITERS ) ) != NULL ) 
   {
-    Token[i] = (char *)AllocPtr ( (strlen(tmp) + 5) * sizeof(char) );
+    Token[i] = (char *)AllocPtr ( strlen(tmp) + 1 );
+    if ( NULL == Token[i] )
+    {
+      FreeTokens( Token, i );
+      return NULL;
+    }
     strcpy ( Token[i], tmp );
     ++i;
     
@@ -117,25 +146,46 @@ char
       Token[i-1],
       Txt ( CRESET ) ); // Debug
     
-    if ( i < sz-100 )
+    if ( i + 1 < sz )
       continue;
     
-    // Resize
+    // Resize, one extra slot is kept for the NULL terminator
     sz += 500;
-    if ( (tmpPPtr = (char **)ReallocPPtr ( (sz) * sizeof(char), (void **)Token ) ) != NULL )
-      Token = tmpPPtr;
-    else
+    tmpPPtr = (char **)ReallocPPtr ( sz * sizeof(char *), (void **)Token );
+    if ( NULL == tmpPPtr )
     {
-      PrtDbgError ( "Unexpected Error.", "LI -> Tokenise" );
+      PrtDbgError ( "Could not grow the token list.", "LI -> Tokenise" );
+      FreeTokens( Token, i );
       return NULL;
     }
+    Token = tmpPPtr;
     
   }
   
-  if ( (tmpPPtr = (char **)ReallocPPtr( (i+5) * sizeof(char), (void **)Token ) ) != NULL )
+  tmpPPtr = (char **)ReallocPPtr( (i+1) * sizeof(char *), (void **)Token );
+  if ( NULL != tmpPPtr ) // Shrinking failure is harmless, the bigger block stays in use
       Token = tmpPPtr;
   Token[i] = NULL;
   return Token;
 }
 
-  
+
+void
+FreeLI_info
+  (LI_info *info)
+{
+  if ( NULL == info )
+    return;
+
+  if ( NULL != info->Tokens )
+  {
+    for ( size_t i = 0; NULL != info->Tokens[i]; ++i )
+      free(info->Tokens[i]);
+    free(info->Tokens);
+    info->Tokens = NULL;
+  }
+
+  if ( NULL != info->Input && GlobalInputBuffer != info->Input )
+    free(info->Input);
+  info->Input = NULL;
+}

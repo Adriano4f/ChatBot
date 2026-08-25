@@ -1,6 +1,19 @@
+#ifndef _HASH_
+#define _HASH_
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+
+/*
+  Error codes returned by the Hash methods
+*/
+
+#define H_SUCESS      0
+#define H_INVALID_ARG   1
+#define H_TABLE_FULL    2
+#define H_ALLOC_FAILED    3
+#define H_WRITE_FAILED    4
 
 /* 
   Structs
@@ -45,7 +58,7 @@ struct Hash
     easier to use.
   */
 
-  const int
+  int
   (*insert)
     (Hash *this, 
     const void *key,
@@ -65,12 +78,12 @@ struct Hash
     const void *key,
     const size_t size);
 
-  void
+  int
   (*display)
     (Hash *this,
     DisplayType type);
   
-  const int
+  int
   (*resize)
     (Hash *this);
   
@@ -114,7 +127,7 @@ const RHEntry
   const size_t size);
 
 
-void
+int
 Hdisplay
   (Hash *this,
   DisplayType type);
@@ -133,4 +146,6 @@ Hdestroy
 Hash
 *Hinit
   (void);
+
+#endif
 

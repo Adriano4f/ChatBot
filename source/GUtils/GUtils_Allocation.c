@@ -13,7 +13,21 @@ void
   (   
     tmp, 
     "Allocation Error.", 
-    "LI -> AllocCharPtr" 
+    "GUtils -> AllocPtr" 
+  );
+}
+
+
+void
+*CallocPtr
+  (size_t nmemb, size_t size)
+{
+  void *tmp = calloc(nmemb, size);
+  return PtrVerify
+  (
+    tmp,
+    "Allocation Error.",
+    "GUtils -> CallocPtr"
   );
 }
 
@@ -27,7 +41,7 @@ void
   (   
     tmp, 
     "Reallocation Error.", 
-    "LI -> ReallocCharPtr" 
+    "GUtils -> ReallocPtr" 
   );
 }
 
@@ -41,7 +55,7 @@ void
   (   
     (void *)tmp, 
     "Allocation Error.", 
-    "LI -> AllocCharPPtr" 
+    "GUtils -> AllocPPtr" 
   );
 }
 
@@ -55,6 +69,6 @@ void
   (   
     (void *)tmp, 
     "Reallocation Error.", 
-    "LI -> ReallocCharPPtr" 
+    "GUtils -> ReallocPPtr" 
   );
 }

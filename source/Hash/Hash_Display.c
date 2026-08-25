@@ -1,42 +1,36 @@
 #include "Hash_internal.h"
 
 #include <stdio.h>
-#include <setjmp.h> // Satanic things
 
-void
+int
 Hdisplay // Debug purposes
   (Hash *this, 
   DisplayType type)
 {
+  if ( NULL == this || NULL == this->TABLE )
+    return H_INVALID_ARG;
+
   printf("Capacity: %zu\nSize: %zu\n", this->CAPACITY, this->SIZE);
 
   switch ( type )
   {
     case CHAR:
-      Hdisplay_char(this);
-      break;
+      return Hdisplay_char(this);
 
     case INT:
-      Hdisplay_int(this);
-      break;
+      return Hdisplay_int(this);
 
     case INT64:
-      Hdisplay_int64(this);
-      break;
+      return Hdisplay_int64(this);
   }
 
-  return;
+  return H_INVALID_ARG;
 }
 
 int
 Hdisplay_char
   (Hash *this)
 {
-  jmp_buf err;
-
-  if ( setjmp(err) )
-    return -2;
-
   for ( size_t i = 0; i < this->CAPACITY; ++i )
   {
     if ( OCCUPIED != this->TABLE[i].state)
@@ -46,25 +40,20 @@ Hdisplay_char
     const char *value   = this->TABLE[i].value;
     const size_t vsize  = this->TABLE[i].vsize;
     if (fwrite(key, sizeof(char), ksize, stdout) != ksize)
-      longjmp(err, 1);
+      return H_WRITE_FAILED;
     printf(" - ");
     if (fwrite(value, sizeof(char), vsize, stdout) != vsize)
-      longjmp(err, 1); // In case of error writing
+      return H_WRITE_FAILED;
     puts(""); 
   }
 
-  return 0;
+  return H_SUCESS;
 }
 
 int
 Hdisplay_int
   (Hash *this)
 {
-  jmp_buf err;
-
-  if ( setjmp(err) )
-    return -2;
-
   for ( size_t i = 0; i < this->CAPACITY; ++i )
   {
     if ( OCCUPIED != this->TABLE[i].state)
@@ -72,14 +61,14 @@ Hdisplay_int
     const int *key   = this->TABLE[i].key;
     const int *value   = this->TABLE[i].value;
     if (fwrite(key, sizeof(int), 1, stdout) != 1)
-      longjmp(err, 1);
+      return H_WRITE_FAILED;
     printf(" - ");
     if (fwrite(value, sizeof(int), 1, stdout) != 1)
-      longjmp(err, 1); // In case of error writing
+      return H_WRITE_FAILED;
     puts("");
   }
   
-  return 0;
+  return H_SUCESS;
 }
 
 
@@ -87,11 +76,6 @@ int
 Hdisplay_int64
   (Hash *this)
 {
-  jmp_buf err;
-
-  if ( setjmp(err) )
-    return -2;
-
   for ( size_t i = 0; i < this->CAPACITY; ++i )
   {
     if ( OCCUPIED != this->TABLE[i].state)
@@ -99,12 +83,12 @@ Hdisplay_int64
     const int64_t *key   = this->TABLE[i].key;
     const int64_t *value   = this->TABLE[i].value;
     if (fwrite(key, sizeof(int64_t), 1, stdout) != 1)
-      longjmp(err, 1);
+      return H_WRITE_FAILED;
     printf(" - ");
     if (fwrite(value, sizeof(int64_t), 1, stdout) != 1)
-      longjmp(err, 1); // In case of error writing
+      return H_WRITE_FAILED;
     puts("");
   }
   
-  return 0;
+  return H_SUCESS;
 }
