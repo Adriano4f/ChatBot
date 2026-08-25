@@ -1,0 +1,11 @@
+# Build artifacts
+build/
+Dana
+Dana.exe
+*.o
+*.exe
+
+# Environment / local config
+.env
+.env.*
+.vscode/

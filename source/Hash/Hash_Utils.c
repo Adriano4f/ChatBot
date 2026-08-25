@@ -9,10 +9,14 @@ Hfind_slot
   const void *key,
   const  size_t size)
 {
+  volatile int retried = 0;
   jmp_buf err;
   if ( setjmp(err) )
   {
-    Hresize(this);
+    // A full table is grown once; failing to grow it is reported to the caller
+    if ( retried || Hresize(this) )
+      return SIZE_MAX;
+    retried = 1;
   }
 
   assert((this->CAPACITY & (this->CAPACITY - 1)) == 0 && "CAPACITY must be power of two, what did you do");
@@ -68,10 +72,11 @@ Hcompare_key_entry
 int 
 Hrehash
   (Hash *this,
-  RHEntry *TABLE)
+  RHEntry *TABLE,
+  const size_t capacity)
 {
   int nsuccess = 0;
-  for ( size_t i = 0; i < (this->CAPACITY); ++i )
+  for ( size_t i = 0; i < capacity; ++i )
   {
     if ( OCCUPIED != TABLE[i].state)
       continue;

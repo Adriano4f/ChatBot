@@ -29,7 +29,7 @@ endif
 
 # LINK
 all: $(OBJ)
-	@$($(PLAT)_CXX) $(OBJ) -o $($(PLAT)_OUT)
+	@$($(PLAT)_CXX) $(OBJ) -o $($(PLAT)_OUT) $($(PLAT)_LDFLAGS)
 
 # COMPILE
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -39,8 +39,7 @@ ifeq ($(OS),Windows_NT)
 else
 	@mkdir -p $(dir $@)
 endif
-	@mod=$(call get_module,$<); \
-	$($(PLAT)_CXX) $(CFLAGS) -I$(mod) $($(PLAT)_FLAGS) $($(mod)_FLAG) -c $< -o $@
+	@$($(PLAT)_CXX) $(CFLAGS) -I$(dir $<) $($(PLAT)_FLAGS) -c $< -o $@
 
 # CLEAN
 u_CLEAN		:=	rm -r

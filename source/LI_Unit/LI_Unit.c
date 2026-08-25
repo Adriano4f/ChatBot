@@ -1,5 +1,6 @@
 #include "LI_Unit.h"
   #include "GUtils.h"
+  #include "CPU.h"
 
 
 // STD
@@ -9,6 +10,17 @@
 
 char GlobalInputBuffer[INPUT_BUFFER_SIZE];
 int LettersGraph[255][255];
+
+
+static void
+FreeTokens
+  (char **Token,
+  size_t count)
+{
+  for ( size_t i = 0; i < count; ++i )
+    free(Token[i]);
+  free(Token);
+}
 
 
 LI_info
@@ -24,32 +36,34 @@ HandleInput
   int err = GetInput();
   switch(err)
   {
-    // TODO: add error handling for each case
     case EOF_ERROR:
-      // Print that program will terminate because of End Of File
-      break;
+      // No further input can arrive, so asking again would loop forever
+      Exit = 1;
+      return (LI_info){ NULL, NULL };
     case INPUT_READ_FAILED_LI:
-      // Ask for input again and return (LI_info){NULL, NULL} -> returning {NULL, NULL} will make Input being handled again
-      break;
     case UNKNOWN_ERROR:
-      // Idk, do something or ask ChatGPT
-      break;
+      // Returning {NULL, NULL} makes Input being handled again
+      return (LI_info){ NULL, NULL };
   }
   
-  
-  if( strlen(GlobalInputBuffer) <= 1 )
+  const size_t len = strlen(GlobalInputBuffer);
+  if( len <= 1 )
     return (LI_info){ NULL, GlobalInputBuffer };
   
+  // The copy is taken before Tokenise, which splits the buffer in place
+  char *Input = (char *)AllocPtr( (len + 1) * sizeof(char) );
+  if ( Input == NULL )
+    return (LI_info){ NULL, NULL };
+  memcpy( Input, GlobalInputBuffer, len + 1 );
+  
   char** Tokens = Tokenise();
-  
-  LI_info info = 
+  if ( Tokens == NULL )
   {
-    Tokens,
-    (char *)malloc( strlen(GlobalInputBuffer) * sizeof(char) + 1 )
-  };
-  strcpy( info.Input, GlobalInputBuffer );
+    free(Input);
+    return (LI_info){ NULL, NULL };
+  }
   
-  return info;
+  return (LI_info){ Tokens, Input };
 }
 
 
@@ -58,6 +72,23 @@ Linked
   (const void* process)
 {
   return (LI_info){ NULL, NULL };
+}
+
+
+void
+FreeLIInfo
+  (LI_info *info)
+{
+  if ( info->Tokens == NULL ) // Input then aliases GlobalInputBuffer, which is static
+    return;
+  
+  for ( size_t i = 0; info->Tokens[i] != NULL; ++i )
+    free(info->Tokens[i]);
+  free(info->Tokens);
+  free(info->Input);
+  
+  info->Tokens = NULL;
+  info->Input = NULL;
 }
 
 
@@ -93,47 +124,53 @@ char
 **Tokenise
   (void)
 {
-  size_t sz = 500;
-  char **Token = (char **)AllocPPtr(sz);
-  char *first = strtok(GlobalInputBuffer, DELIMITERS);
-  
-  if ( !first ) 
+  size_t sz = TOKEN_CAPACITY_STEP;
+  char **Token = (char **)AllocPPtr( sz * sizeof(char *) );
+  if ( Token == NULL )
     return NULL;
-  Token[0] = (char *)AllocPtr (BUFFER_SIZE * sizeof(char)); // BUFFER_SIZE == 512
-  strcpy ( Token[0], first );
-  Token[0] = (char *)ReallocPtr ( strlen( Token[0]), Token[0] );
   
-  char **tmpPPtr;
-  char *tmp;
-  int i = 1;
-  while ( (tmp = strtok( NULL, DELIMITERS ) ) != NULL ) 
+  size_t i = 0;
+  for ( char *tmp = strtok( GlobalInputBuffer, DELIMITERS );
+    tmp != NULL;
+    tmp = strtok( NULL, DELIMITERS ) )
   {
-    Token[i] = (char *)AllocPtr ( (strlen(tmp) + 5) * sizeof(char) );
-    strcpy ( Token[i], tmp );
-    ++i;
+    if ( i + 1 >= sz ) // One slot is always reserved for the NULL terminator
+    {
+      char **tmpPPtr = (char **)ReallocPPtr
+        ( (sz + TOKEN_CAPACITY_STEP) * sizeof(char *), (void **)Token );
+      if ( tmpPPtr == NULL )
+      {
+        PrtDbgError ( "Unexpected Error.", "LI -> Tokenise" );
+        FreeTokens ( Token, i );
+        return NULL;
+      }
+      Token = tmpPPtr;
+      sz += TOKEN_CAPACITY_STEP;
+    }
+    
+    const size_t len = strlen(tmp);
+    Token[i] = (char *)AllocPtr ( (len + 1) * sizeof(char) );
+    if ( Token[i] == NULL )
+    {
+      FreeTokens ( Token, i );
+      return NULL;
+    }
+    memcpy ( Token[i], tmp, len + 1 );
     
     printf ("%s%s%s\t",
       Txt ( CYAN ),
-      Token[i-1],
+      Token[i],
       Txt ( CRESET ) ); // Debug
     
-    if ( i < sz-100 )
-      continue;
-    
-    // Resize
-    sz += 500;
-    if ( (tmpPPtr = (char **)ReallocPPtr ( (sz) * sizeof(char), (void **)Token ) ) != NULL )
-      Token = tmpPPtr;
-    else
-    {
-      PrtDbgError ( "Unexpected Error.", "LI -> Tokenise" );
-      return NULL;
-    }
-    
+    ++i;
   }
   
-  if ( (tmpPPtr = (char **)ReallocPPtr( (i+5) * sizeof(char), (void **)Token ) ) != NULL )
-      Token = tmpPPtr;
+  if ( i == 0 )
+  {
+    free(Token);
+    return NULL;
+  }
+  
   Token[i] = NULL;
   return Token;
 }

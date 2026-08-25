@@ -23,15 +23,16 @@ Hcompare_key_entry
 int 
 Hrehash
   (Hash *this,
-  RHEntry *TABLE);
+  RHEntry *TABLE,
+  const size_t capacity);
 
-const int
+int
 Hdisplay_char
   (Hash *this);
-const int
+int
 Hdisplay_int
   (Hash *this);
-const int
+int
 Hdisplay_int64
   (Hash *this);
 

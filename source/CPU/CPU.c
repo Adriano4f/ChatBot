@@ -12,13 +12,17 @@ CentralProcess
   char msg2[] = "el caco de";
   char vl2[] = "Lauriano";
   Hash *h = Hinit();
+  if ( h == NULL )
+    return ERROR;
   INSERT(h, msg, sizeof(msg), vl, sizeof(vl));
   INSERT(h, msg2, sizeof(msg2), vl2, sizeof(vl2));
   DISPLAY(h, CHAR);
   char vl1[] = "Metanfetamina";
   INSERT(h, msg, sizeof(msg), vl1, sizeof(vl1));
   DISPLAY(h, CHAR);
-  printf("%s", (const char*) FETCH(h, msg, sizeof(msg))->value );
+  const RHEntry *entry = FETCH(h, msg, sizeof(msg));
+  if ( entry != NULL )
+    printf("%s", (const char*) entry->value );
   Exit = 0;
   while(!Exit)
   {
@@ -32,7 +36,9 @@ CentralProcess
       // TODO: Errors for LP_Unit
     }
     
+    FreeLIInfo(&InputInfo);
   }
+  DESTROY(h);
   return SUCESS;
 }
 

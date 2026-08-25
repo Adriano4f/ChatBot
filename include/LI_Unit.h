@@ -17,6 +17,7 @@
 
 #define DELIMITERS " \t\n.,!?'"
 #define BUFFER_SIZE 512
+#define TOKEN_CAPACITY_STEP 64
 
 
 // H
@@ -40,6 +41,10 @@ HandleInput
 LI_info
 Linked
   (const void* process);
+
+void
+FreeLIInfo
+  (LI_info *info);
 
 int 
 GetInput

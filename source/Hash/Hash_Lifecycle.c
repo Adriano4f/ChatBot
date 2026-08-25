@@ -15,16 +15,19 @@ Hresize
   if ( tmp == NULL )
     return 1;
 
+  const size_t OLD_SIZE = this->SIZE;
   RHEntry *TABLE = this->TABLE;
   this->TABLE = (RHEntry *)tmp;
   this->SIZE = 0;
   this->CAPACITY = NEW_CAPACITY;
 
-  const int err_Hrehash = Hrehash(this, TABLE);
+  const int err_Hrehash = Hrehash(this, TABLE, OLD_CAPACITY);
   if ( err_Hrehash )
   {
+    free(this->TABLE);
     this->TABLE = TABLE;
     this->CAPACITY = OLD_CAPACITY;
+    this->SIZE = OLD_SIZE;
     return err_Hrehash;
   }
 
@@ -49,6 +52,8 @@ Hash
   (void)
 {
   Hash *ret = (Hash *)AllocPtr( sizeof(Hash) );
+  if ( ret == NULL )
+    return NULL;
 
   size_t CAPACITY = 8;
   size_t SIZE = 0;
@@ -58,6 +63,11 @@ Hash
   ret->LOAD_FACTOR = SIZE*1000/CAPACITY;
 
   ret->TABLE = (RHEntry *)calloc( CAPACITY, sizeof(RHEntry) ); // TODO: create a calloc wrapper for error handling
+  if ( ret->TABLE == NULL )
+  {
+    free(ret);
+    return NULL;
+  }
 
   ret->insert = Hinsert;
   ret->delete = Hdelete;
