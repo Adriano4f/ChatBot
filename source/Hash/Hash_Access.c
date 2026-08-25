@@ -7,7 +7,7 @@ const RHEntry
   const size_t size)
 {
   const size_t idx = Hfind_slot(this, key, size);
-  if ( SIZE_MAX == idx || !Hcompare_key_entry( key, size, this->TABLE[idx] ) )
+  if ( HASH_INVALID_SLOT == idx || !Hcompare_key_entry( key, size, this->TABLE[idx] ) )
     return NULL;
   
   const RHEntry *toret = &(this->TABLE[idx]);

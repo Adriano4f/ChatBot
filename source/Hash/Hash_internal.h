@@ -2,10 +2,18 @@
 
 #define LF_THRESHOLD 980
 #define LF_RESIZE_TRIGGER_VALUE 700
+#define HASH_INVALID_SLOT SIZE_MAX
+#define HASH_LOAD_FACTOR(size, capacity) ((size)*1000/(capacity))
 
 size_t
 hashfn
   (const void *key,
+  const size_t size);
+
+size_t
+Hbucket
+  (const Hash *this,
+  const void *key,
   const size_t size);
 
 size_t 
@@ -25,13 +33,8 @@ Hrehash
   (Hash *this,
   RHEntry *TABLE);
 
-const int
-Hdisplay_char
-  (Hash *this);
-const int
-Hdisplay_int
-  (Hash *this);
-const int
-Hdisplay_int64
-  (Hash *this);
-
+int
+Hdisplay_entries
+  (Hash *this,
+  size_t elemsize,
+  bool use_entry_sizes);

@@ -8,13 +8,7 @@ void
 *AllocPtr
   (size_t nmemb)
 {
-  void *tmp = malloc(nmemb);
-  return PtrVerify
-  (   
-    tmp, 
-    "Allocation Error.", 
-    "LI -> AllocCharPtr" 
-  );
+  return PtrVerify(malloc(nmemb), "Allocation Error.", "GUtils -> AllocPtr");
 }
 
 
@@ -22,13 +16,7 @@ void
 *ReallocPtr
   (size_t nmemb, void *ptr)
 {
-  void *tmp = realloc(ptr, nmemb);
-  return PtrVerify
-  (   
-    tmp, 
-    "Reallocation Error.", 
-    "LI -> ReallocCharPtr" 
-  );
+  return PtrVerify(realloc(ptr, nmemb), "Reallocation Error.", "GUtils -> ReallocPtr");
 }
 
 
@@ -36,13 +24,7 @@ void
 **AllocPPtr
   (size_t nmemb)
 {
-  void **tmp = malloc(nmemb);
-  return PtrVerify
-  (   
-    (void *)tmp, 
-    "Allocation Error.", 
-    "LI -> AllocCharPPtr" 
-  );
+  return (void **)AllocPtr(nmemb);
 }
 
 
@@ -50,11 +32,5 @@ void
 **ReallocPPtr
   (size_t nmemb, void **ptr)
 {
-  void **tmp = realloc(ptr, nmemb);
-  return PtrVerify
-  (   
-    (void *)tmp, 
-    "Reallocation Error.", 
-    "LI -> ReallocCharPPtr" 
-  );
+  return (void **)ReallocPtr(nmemb, ptr);
 }

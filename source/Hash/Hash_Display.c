@@ -13,15 +13,15 @@ Hdisplay // Debug purposes
   switch ( type )
   {
     case CHAR:
-      Hdisplay_char(this);
+      Hdisplay_entries(this, sizeof(char), true);
       break;
 
     case INT:
-      Hdisplay_int(this);
+      Hdisplay_entries(this, sizeof(int), false);
       break;
 
     case INT64:
-      Hdisplay_int64(this);
+      Hdisplay_entries(this, sizeof(int64_t), false);
       break;
   }
 
@@ -29,8 +29,10 @@ Hdisplay // Debug purposes
 }
 
 int
-Hdisplay_char
-  (Hash *this)
+Hdisplay_entries
+  (Hash *this,
+  size_t elemsize,
+  bool use_entry_sizes)
 {
   jmp_buf err;
 
@@ -41,67 +43,14 @@ Hdisplay_char
   {
     if ( OCCUPIED != this->TABLE[i].state)
       continue;
-    const char *key   = this->TABLE[i].key;
-    const size_t ksize  = this->TABLE[i].ksize;
-    const char *value   = this->TABLE[i].value;
-    const size_t vsize  = this->TABLE[i].vsize;
-    if (fwrite(key, sizeof(char), ksize, stdout) != ksize)
+    const void *key   = this->TABLE[i].key;
+    const size_t ksize = use_entry_sizes ? this->TABLE[i].ksize : 1;
+    const void *value   = this->TABLE[i].value;
+    const size_t vsize = use_entry_sizes ? this->TABLE[i].vsize : 1;
+    if (fwrite(key, elemsize, ksize, stdout) != ksize)
       longjmp(err, 1);
     printf(" - ");
-    if (fwrite(value, sizeof(char), vsize, stdout) != vsize)
-      longjmp(err, 1); // In case of error writing
-    puts(""); 
-  }
-
-  return 0;
-}
-
-int
-Hdisplay_int
-  (Hash *this)
-{
-  jmp_buf err;
-
-  if ( setjmp(err) )
-    return -2;
-
-  for ( size_t i = 0; i < this->CAPACITY; ++i )
-  {
-    if ( OCCUPIED != this->TABLE[i].state)
-      continue;
-    const int *key   = this->TABLE[i].key;
-    const int *value   = this->TABLE[i].value;
-    if (fwrite(key, sizeof(int), 1, stdout) != 1)
-      longjmp(err, 1);
-    printf(" - ");
-    if (fwrite(value, sizeof(int), 1, stdout) != 1)
-      longjmp(err, 1); // In case of error writing
-    puts("");
-  }
-  
-  return 0;
-}
-
-
-int
-Hdisplay_int64
-  (Hash *this)
-{
-  jmp_buf err;
-
-  if ( setjmp(err) )
-    return -2;
-
-  for ( size_t i = 0; i < this->CAPACITY; ++i )
-  {
-    if ( OCCUPIED != this->TABLE[i].state)
-      continue;
-    const int64_t *key   = this->TABLE[i].key;
-    const int64_t *value   = this->TABLE[i].value;
-    if (fwrite(key, sizeof(int64_t), 1, stdout) != 1)
-      longjmp(err, 1);
-    printf(" - ");
-    if (fwrite(value, sizeof(int64_t), 1, stdout) != 1)
+    if (fwrite(value, elemsize, vsize, stdout) != vsize)
       longjmp(err, 1); // In case of error writing
     puts("");
   }

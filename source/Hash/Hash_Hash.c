@@ -16,3 +16,14 @@ hashfn
   }
   return hash;
 }
+
+size_t
+Hbucket
+  (const Hash *this,
+  const void *key,
+  const size_t size)
+{
+  // Mod operation is really slow, and if I don't micro optimise I get stressed
+  // CAPACITY must be a power of two
+  return hashfn(key, size) & (this->CAPACITY-1);
+}

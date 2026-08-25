@@ -81,10 +81,7 @@ GetInput
     PrtDbgError( "Unexpected Error.", "LI -> GetInput" );
     return UNKNOWN_ERROR;
   }
-  printf("%s%s%s",
-    Txt(CYAN),
-    GlobalInputBuffer,
-    Txt(CRESET) ); // Debug
+  PrtColored(CYAN, GlobalInputBuffer); // Debug
   return 0;
 }
 
@@ -112,10 +109,8 @@ char
     strcpy ( Token[i], tmp );
     ++i;
     
-    printf ("%s%s%s\t",
-      Txt ( CYAN ),
-      Token[i-1],
-      Txt ( CRESET ) ); // Debug
+    PrtColored(CYAN, Token[i-1]); // Debug
+    printf("\t");
     
     if ( i < sz-100 )
       continue;

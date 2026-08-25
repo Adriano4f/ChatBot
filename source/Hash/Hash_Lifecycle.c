@@ -55,7 +55,7 @@ Hash
 
   ret->CAPACITY = CAPACITY;
   ret->SIZE = SIZE;
-  ret->LOAD_FACTOR = SIZE*1000/CAPACITY;
+  ret->LOAD_FACTOR = HASH_LOAD_FACTOR(SIZE, CAPACITY);
 
   ret->TABLE = (RHEntry *)calloc( CAPACITY, sizeof(RHEntry) ); // TODO: create a calloc wrapper for error handling
 

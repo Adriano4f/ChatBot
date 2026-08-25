@@ -72,6 +72,11 @@ const char*
 Txt
   (const char* text);
 
+void
+PrtColored
+  (const char *color,
+  const char *text);
+
 void 
 PrtError
   (const char *msg,

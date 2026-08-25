@@ -11,6 +11,14 @@ Txt
   return text;
 }
 
+void
+PrtColored
+  (const char *color,
+  const char *text)
+{
+  printf("%s%s%s", Txt(color), text, Txt(CRESET));
+}
+
 void 
 PrtError
   (const char *msg,
@@ -45,4 +53,3 @@ void
   else
     return ptr;
 }
-

@@ -9,12 +9,12 @@ Hinsert
   const size_t vsize)
 {
   const size_t idx = Hfind_slot(this, key, ksize);
-  if ( -1 == idx )
+  if ( HASH_INVALID_SLOT == idx )
     return 1;
 
   if ( OCCUPIED != this->TABLE[idx].state )
-    this->LOAD_FACTOR =  ++(this->SIZE)*1000/(this->CAPACITY);
-  this->TABLE[idx] = (RHEntry){ (void *)key, ksize, (void *)value, vsize, (hashfn(key, ksize) & (this->CAPACITY-1)) - idx, OCCUPIED };
+    this->LOAD_FACTOR =  HASH_LOAD_FACTOR(++(this->SIZE), this->CAPACITY);
+  this->TABLE[idx] = (RHEntry){ (void *)key, ksize, (void *)value, vsize, Hbucket(this, key, ksize) - idx, OCCUPIED };
   
 
   if ( LF_RESIZE_TRIGGER_VALUE < this->LOAD_FACTOR && Hresize(this) ); // && Will only execute if first condition is met, this is to avoid warnings from the compiler
@@ -38,7 +38,7 @@ Hdelete
     With this said, it is possible to conserve past values and access them manually.
   */
   const size_t idx = Hfind_slot(this, key, size);
-  if ( -1 != idx && Hcompare_key_entry( key, size, this->TABLE[idx] ) )
+  if ( HASH_INVALID_SLOT != idx && Hcompare_key_entry( key, size, this->TABLE[idx] ) )
   {
     this->TABLE[idx].state = TOMBSTONE;
     this->TABLE[idx].ksize = 0;

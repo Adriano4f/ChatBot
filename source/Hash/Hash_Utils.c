@@ -16,9 +16,9 @@ Hfind_slot
   }
 
   assert((this->CAPACITY & (this->CAPACITY - 1)) == 0 && "CAPACITY must be power of two, what did you do");
-  const size_t o_idx = hashfn(key, size) & (this->CAPACITY-1); // Mod operation is really slow, and if I don't micro optimise I get stressed
+  const size_t o_idx = Hbucket(this, key, size);
   size_t idx = o_idx;
-  size_t toret = SIZE_MAX;
+  size_t toret = HASH_INVALID_SLOT;
 
   for ( size_t i = 0; i < this->CAPACITY; ++i )
   {
@@ -38,7 +38,7 @@ Hfind_slot
     }
     ++idx;
   }
-  if (SIZE_MAX == toret)
+  if (HASH_INVALID_SLOT == toret)
     longjmp(err, 1); // TODO: change this longjmp, worst thing in this file
   
   return toret;
