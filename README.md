@@ -28,10 +28,37 @@ ctest --test-dir build-asan --output-on-failure
 
 ## Layout
 
+One directory per module, each split the way Unreal Engine splits its modules:
+
 ```
-include/      public headers
-src/core/     hash table and allocation helpers
-src/cpu/      the central process loop
-src/lang/     language input and processing units
-tests/        ctest executables
+src/<Module>/Public/    the module's API: what other modules may include
+src/<Module>/Private/   implementation and internal headers
+cmake/DanaModule.cmake  the dana_module() helper every module is declared with
+tests/                  ctest executables
 ```
+
+Modules, bottom up:
+
+| Module    | Purpose                                        |
+|-----------|------------------------------------------------|
+| `GUtils`  | allocation wrappers and debug output           |
+| `Hash`    | open-addressed hash table                      |
+| `LI_Unit` | language input: reading stdin and tokenising   |
+| `LP_Unit` | language processing                            |
+| `CPU`     | the central process loop                       |
+| `Dana`    | the executable, `main.c` only                  |
+
+Adding a module means creating `src/<Name>/{Public,Private}` and one
+`dana_module()` call:
+
+```cmake
+dana_module(MyModule
+  SOURCES MyModule.c        # relative to src/MyModule/Private
+  PUBLIC_DEPENDS LI_Unit    # modules named in MyModule.h
+  PRIVATE_DEPENDS GUtils    # modules used only by the implementation
+)
+```
+
+Each module's `Private` directory is on its own include path only, so a module
+cannot include another module's internal headers — the compiler enforces the
+API boundary rather than a convention.
