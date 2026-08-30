@@ -8,7 +8,6 @@
 #include <string.h>
 
 char GlobalInputBuffer[INPUT_BUFFER_SIZE];
-int LettersGraph[255][255];
 
 
 LI_info

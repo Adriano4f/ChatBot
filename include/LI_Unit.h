@@ -24,7 +24,6 @@
 // H
 
 extern char GlobalInputBuffer[INPUT_BUFFER_SIZE];
-extern int LettersGraph[255][255];
 
 typedef struct LI_info
 {
