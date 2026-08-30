@@ -94,21 +94,31 @@ char
   (void)
 {
   size_t sz = 500;
-  char **Token = (char **)AllocPPtr(sz);
+  char **Token = (char **)AllocPPtr(sz * sizeof(char *));
+  if ( !Token )
+    return NULL;
   char *first = strtok(GlobalInputBuffer, DELIMITERS);
   
   if ( !first ) 
     return NULL;
-  Token[0] = (char *)AllocPtr (BUFFER_SIZE * sizeof(char)); // BUFFER_SIZE == 512
+  Token[0] = (char *)AllocPtr ( (strlen(first) + 1) * sizeof(char) );
+  if ( !Token[0] )
+    return NULL;
   strcpy ( Token[0], first );
-  Token[0] = (char *)ReallocPtr ( strlen( Token[0]), Token[0] );
+  
+  printf ("%s%s%s\t",
+    Txt ( CYAN ),
+    Token[0],
+    Txt ( CRESET ) ); // Debug
   
   char **tmpPPtr;
   char *tmp;
-  int i = 1;
+  size_t i = 1;
   while ( (tmp = strtok( NULL, DELIMITERS ) ) != NULL ) 
   {
-    Token[i] = (char *)AllocPtr ( (strlen(tmp) + 5) * sizeof(char) );
+    Token[i] = (char *)AllocPtr ( (strlen(tmp) + 1) * sizeof(char) );
+    if ( !Token[i] )
+      return NULL;
     strcpy ( Token[i], tmp );
     ++i;
     
@@ -117,12 +127,12 @@ char
       Token[i-1],
       Txt ( CRESET ) ); // Debug
     
-    if ( i < sz-100 )
+    if ( i + 1 < sz ) // One slot is always kept for the NULL terminator
       continue;
     
     // Resize
     sz += 500;
-    if ( (tmpPPtr = (char **)ReallocPPtr ( (sz) * sizeof(char), (void **)Token ) ) != NULL )
+    if ( (tmpPPtr = (char **)ReallocPPtr ( sz * sizeof(char *), (void **)Token ) ) != NULL )
       Token = tmpPPtr;
     else
     {
@@ -132,7 +142,7 @@ char
     
   }
   
-  if ( (tmpPPtr = (char **)ReallocPPtr( (i+5) * sizeof(char), (void **)Token ) ) != NULL )
+  if ( (tmpPPtr = (char **)ReallocPPtr( (i+1) * sizeof(char *), (void **)Token ) ) != NULL )
       Token = tmpPPtr;
   Token[i] = NULL;
   return Token;

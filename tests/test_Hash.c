@@ -1,8 +1,9 @@
 #include "TestFramework.h"
 
-#include "Hash_internal.h" // Pulls Hash.h, which has no include guard of its own
+#include "Hash_internal.h" // Pulls Hash.h too
 
 // STD
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -12,6 +13,36 @@
 */
 
 #define KEY(literal) (literal), sizeof(literal)
+
+/*
+  Fills keys with n distinct keys that all hash to the same bucket of a table of
+  the given capacity, so the probing, tombstone and collision paths can be
+  driven without depending on a particular hash value.
+*/
+static void
+CollidingKeys
+  (char keys[][16],
+  const size_t n,
+  const size_t capacity)
+{
+  size_t found = 0;
+  size_t target = SIZE_MAX;
+
+  for ( size_t i = 0; found < n && i < 100000; ++i )
+  {
+    char candidate[16];
+    snprintf(candidate, sizeof(candidate), "k%zu", i);
+    const size_t bucket = hashfn(candidate, strlen(candidate) + 1) & (capacity - 1);
+
+    if ( SIZE_MAX == target )
+      target = bucket;
+    if ( bucket != target )
+      continue;
+
+    strcpy(keys[found], candidate);
+    ++found;
+  }
+}
 
 /* == hashfn == */
 
@@ -38,6 +69,14 @@ TEST(hashfn_is_order_sensitive)
 TEST(hashfn_only_reads_size_bytes)
 {
   CHECK_EQ_SIZE( hashfn("az", 1), hashfn("ax", 1) );
+}
+
+TEST(hashfn_reads_key_bytes_as_unsigned)
+{
+  /* Reading through a signed char would sign extend 0xff into the whole word. */
+  const size_t expected = (0xcbf29ce484222325ULL ^ 0xffULL) * 0x100000001b3ULL;
+
+  CHECK_EQ_SIZE( hashfn("\xff", 1), expected );
 }
 
 /* == Hcompare_key_entry == */
@@ -320,6 +359,167 @@ TEST(insert_reuses_a_tombstoned_slot)
   Hdestroy(h);
 }
 
+TEST(delete_decrements_the_size_and_the_load_factor)
+{
+  Hash *h = Hinit();
+
+  Hinsert(h, KEY("a"), KEY("1"));
+  Hinsert(h, KEY("b"), KEY("2"));
+  Hdelete(h, KEY("a"));
+
+  CHECK_EQ_SIZE( h->SIZE, 1 );
+  CHECK_EQ_SIZE( h->LOAD_FACTOR, 125 ); // 1 * 1000 / 8
+
+  /* Inserting and deleting the same key must not inflate the accounting. */
+  for ( size_t i = 0; i < 20; ++i )
+  {
+    Hinsert(h, KEY("a"), KEY("1"));
+    Hdelete(h, KEY("a"));
+  }
+
+  CHECK_EQ_SIZE( h->SIZE, 1 );
+  CHECK_EQ_SIZE( h->CAPACITY, 8 );
+
+  Hdestroy(h);
+}
+
+TEST(fetch_finds_a_key_stored_after_a_tombstone)
+{
+  static char keys[3][16];
+  Hash *h = Hinit();
+
+  CollidingKeys(keys, 3, h->CAPACITY);
+
+  for ( size_t i = 0; i < 3; ++i )
+    Hinsert(h, keys[i], strlen(keys[i]) + 1, keys[i], strlen(keys[i]) + 1);
+
+  /* The hole left in the middle of the chain must not hide what follows it. */
+  Hdelete(h, keys[1], strlen(keys[1]) + 1);
+
+  CHECK_NULL( Hfetch(h, keys[1], strlen(keys[1]) + 1) );
+
+  const RHEntry *last = Hfetch(h, keys[2], strlen(keys[2]) + 1);
+  CHECK_NOT_NULL( last );
+  if ( last != NULL )
+    CHECK_EQ_STR( (const char *)last->value, keys[2] );
+
+  Hdestroy(h);
+}
+
+TEST(insert_does_not_duplicate_a_key_stored_after_a_tombstone)
+{
+  static char keys[3][16];
+  Hash *h = Hinit();
+
+  CollidingKeys(keys, 3, h->CAPACITY);
+
+  for ( size_t i = 0; i < 3; ++i )
+    Hinsert(h, keys[i], strlen(keys[i]) + 1, "viejo", sizeof("viejo"));
+
+  Hdelete(h, keys[0], strlen(keys[0]) + 1); // Tombstone at the head of the chain
+  Hinsert(h, keys[2], strlen(keys[2]) + 1, "nuevo", sizeof("nuevo"));
+
+  CHECK_EQ_SIZE( h->SIZE, 2 ); // Updated in place, not written to the tombstone
+
+  size_t copies = 0;
+  for ( size_t i = 0; i < h->CAPACITY; ++i )
+  {
+    if ( OCCUPIED == h->TABLE[i].state
+      && Hcompare_key_entry(keys[2], strlen(keys[2]) + 1, h->TABLE[i]) )
+      ++copies;
+  }
+  CHECK_EQ_SIZE( copies, 1 );
+
+  const RHEntry *entry = Hfetch(h, keys[2], strlen(keys[2]) + 1);
+  CHECK_NOT_NULL( entry );
+  if ( entry != NULL )
+    CHECK_EQ_STR( (const char *)entry->value, "nuevo" );
+
+  Hdestroy(h);
+}
+
+/* == Hresize / Hrehash == */
+
+TEST(insert_grows_the_table_past_its_capacity)
+{
+  static char keys[64][16];
+  Hash *h = Hinit();
+
+  for ( size_t i = 0; i < 64; ++i )
+  {
+    snprintf(keys[i], sizeof(keys[i]), "clave%zu", i);
+    CHECK_EQ_INT( Hinsert(h, keys[i], strlen(keys[i]) + 1,
+                          keys[i], strlen(keys[i]) + 1), 0 );
+  }
+
+  CHECK_EQ_SIZE( h->SIZE, 64 );
+  CHECK_TRUE( h->CAPACITY > 64 );
+  CHECK_EQ_SIZE( h->LOAD_FACTOR, h->SIZE*1000/h->CAPACITY );
+  CHECK_TRUE( h->LOAD_FACTOR <= LF_RESIZE_TRIGGER_VALUE );
+
+  for ( size_t i = 0; i < 64; ++i )
+  {
+    const RHEntry *entry = Hfetch(h, keys[i], strlen(keys[i]) + 1);
+    CHECK_NOT_NULL( entry );
+    if ( entry != NULL )
+      CHECK_EQ_STR( (const char *)entry->value, keys[i] );
+  }
+
+  Hdestroy(h);
+}
+
+TEST(resize_rehashes_every_entry_and_drops_the_tombstones)
+{
+  static char keys[6][16];
+  Hash *h = Hinit();
+
+  for ( size_t i = 0; i < 6; ++i )
+  {
+    snprintf(keys[i], sizeof(keys[i]), "clave%zu", i);
+    Hinsert(h, keys[i], strlen(keys[i]) + 1, keys[i], strlen(keys[i]) + 1);
+  }
+  Hdelete(h, keys[0], strlen(keys[0]) + 1);
+
+  const size_t OLD_CAPACITY = h->CAPACITY;
+  CHECK_EQ_INT( Hresize(h), 0 );
+
+  CHECK_EQ_SIZE( h->CAPACITY, OLD_CAPACITY*2 );
+  CHECK_EQ_SIZE( h->SIZE, 5 );
+  CHECK_EQ_SIZE( h->LOAD_FACTOR, 5*1000/h->CAPACITY );
+
+  size_t tombstones = 0;
+  for ( size_t i = 0; i < h->CAPACITY; ++i )
+  {
+    if ( TOMBSTONE == h->TABLE[i].state )
+      ++tombstones;
+  }
+  CHECK_EQ_SIZE( tombstones, 0 );
+
+  CHECK_NULL( Hfetch(h, keys[0], strlen(keys[0]) + 1) );
+  for ( size_t i = 1; i < 6; ++i )
+    CHECK_NOT_NULL( Hfetch(h, keys[i], strlen(keys[i]) + 1) );
+
+  Hdestroy(h);
+}
+
+TEST(rehash_moves_the_entries_of_the_old_table)
+{
+  RHEntry OLD[2] =
+  {
+    { (void *)"droga", sizeof("droga"), (void *)"Cocaina", sizeof("Cocaina"), 0, OCCUPIED },
+    { (void *)"borrada", 0, (void *)"Nada", sizeof("Nada"), 0, TOMBSTONE },
+  };
+  Hash *h = Hinit();
+
+  CHECK_EQ_INT( Hrehash(h, OLD, 2), 0 );
+
+  CHECK_EQ_SIZE( h->SIZE, 1 ); // Only the occupied slot is carried over
+  CHECK_NOT_NULL( Hfetch(h, KEY("droga")) );
+  CHECK_NULL( Hfetch(h, "borrada", sizeof("borrada")) );
+
+  Hdestroy(h);
+}
+
 /* == Hfind_slot == */
 
 TEST(find_slot_stays_inside_the_table)
@@ -362,6 +562,48 @@ TEST(find_slot_probes_past_a_colliding_key)
 
   CHECK_TRUE( idx != occupied );
   CHECK_EQ_INT( h->TABLE[idx].state, EMPTY );
+
+  Hdestroy(h);
+}
+
+TEST(find_slot_reports_a_full_table)
+{
+  static char keys[8][16];
+  Hash *h = Hinit();
+
+  /* Occupy every slot behind the load factor's back. */
+  for ( size_t i = 0; i < h->CAPACITY; ++i )
+  {
+    snprintf(keys[i], sizeof(keys[i]), "clave%zu", i);
+    h->TABLE[i] = (RHEntry){ keys[i], strlen(keys[i]) + 1, keys[i], strlen(keys[i]) + 1, 0, OCCUPIED };
+    ++(h->SIZE);
+  }
+
+  CHECK_EQ_SIZE( Hfind_slot(h, KEY("ninguna")), SIZE_MAX );
+
+  /* Insert must recover from it by growing instead of failing. */
+  CHECK_EQ_INT( Hinsert(h, KEY("ninguna"), KEY("cabe")), 0 );
+  CHECK_TRUE( h->CAPACITY > 8 );
+  CHECK_NOT_NULL( Hfetch(h, KEY("ninguna")) );
+
+  Hdestroy(h);
+}
+
+TEST(find_slot_returns_the_first_tombstone_of_the_chain)
+{
+  static char keys[4][16];
+  Hash *h = Hinit();
+
+  CollidingKeys(keys, 4, h->CAPACITY);
+
+  for ( size_t i = 0; i < 3; ++i ) // keys[3] shares the chain but is never stored
+    Hinsert(h, keys[i], strlen(keys[i]) + 1, keys[i], strlen(keys[i]) + 1);
+
+  const size_t freed = Hfind_slot(h, keys[1], strlen(keys[1]) + 1);
+  Hdelete(h, keys[1], strlen(keys[1]) + 1);
+
+  /* A missing key lands on the reusable hole, not on the empty slot after it. */
+  CHECK_EQ_SIZE( Hfind_slot(h, keys[3], strlen(keys[3]) + 1), freed );
 
   Hdestroy(h);
 }
@@ -578,6 +820,7 @@ RegisterHashTests
   RUN_TEST(hashfn_differs_for_different_keys);
   RUN_TEST(hashfn_is_order_sensitive);
   RUN_TEST(hashfn_only_reads_size_bytes);
+  RUN_TEST(hashfn_reads_key_bytes_as_unsigned);
 
   RUN_TEST(compare_key_entry_matches_equal_keys);
   RUN_TEST(compare_key_entry_rejects_different_content);
@@ -601,10 +844,19 @@ RegisterHashTests
   RUN_TEST(delete_of_a_missing_key_changes_nothing);
   RUN_TEST(delete_keeps_the_other_keys_reachable);
   RUN_TEST(insert_reuses_a_tombstoned_slot);
+  RUN_TEST(delete_decrements_the_size_and_the_load_factor);
+  RUN_TEST(fetch_finds_a_key_stored_after_a_tombstone);
+  RUN_TEST(insert_does_not_duplicate_a_key_stored_after_a_tombstone);
+
+  RUN_TEST(insert_grows_the_table_past_its_capacity);
+  RUN_TEST(resize_rehashes_every_entry_and_drops_the_tombstones);
+  RUN_TEST(rehash_moves_the_entries_of_the_old_table);
 
   RUN_TEST(find_slot_stays_inside_the_table);
   RUN_TEST(find_slot_returns_the_slot_holding_the_key);
   RUN_TEST(find_slot_probes_past_a_colliding_key);
+  RUN_TEST(find_slot_reports_a_full_table);
+  RUN_TEST(find_slot_returns_the_first_tombstone_of_the_chain);
 
   RUN_TEST(macros_call_the_bound_methods);
 

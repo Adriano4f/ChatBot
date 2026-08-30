@@ -1,7 +1,9 @@
+#ifndef _HASH_INTERNAL_
+#define _HASH_INTERNAL_
+
 #include "Hash.h"
 
-#define LF_THRESHOLD 980
-#define LF_RESIZE_TRIGGER_VALUE 700
+#define LF_RESIZE_TRIGGER_VALUE 700 // Per mille, the table grows above 0.7
 
 size_t
 hashfn
@@ -23,15 +25,18 @@ Hcompare_key_entry
 int 
 Hrehash
   (Hash *this,
-  RHEntry *TABLE);
+  RHEntry *TABLE,
+  const size_t OLD_CAPACITY);
 
-const int
+int
 Hdisplay_char
   (Hash *this);
-const int
+int
 Hdisplay_int
   (Hash *this);
-const int
+int
 Hdisplay_int64
   (Hash *this);
+
+#endif
 

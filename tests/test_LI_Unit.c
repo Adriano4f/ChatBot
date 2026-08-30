@@ -124,20 +124,20 @@ TEST(tokenise_returns_null_when_the_input_is_only_delimiters)
 
 TEST(tokenise_splits_a_single_word)
 {
+  char out[512];
   SetGlobalInput("hola\n");
 
+  CaptureStdoutStart();
   char **tokens = Tokenise();
+  CaptureStdoutStop(out, sizeof(out));
 
   CHECK_NOT_NULL( tokens );
   if ( tokens == NULL )
     return;
 
-  /*
-    The first token is shrunk to strlen bytes, dropping its terminator, so it is
-    compared byte by byte instead of as a string.
-  */
-  CHECK_EQ_MEM( tokens[0], "hola", strlen("hola") );
+  CHECK_EQ_STR( tokens[0], "hola" );
   CHECK_NULL( tokens[1] );
+  CHECK_NOT_NULL( strstr(out, "hola") ); // Every token is echoed, the first one included
 }
 
 TEST(tokenise_splits_on_punctuation_and_spaces)
@@ -153,10 +153,44 @@ TEST(tokenise_splits_on_punctuation_and_spaces)
   if ( tokens == NULL )
     return;
 
-  CHECK_EQ_MEM( tokens[0], "hola", strlen("hola") );
+  CHECK_EQ_STR( tokens[0], "hola" );
   CHECK_EQ_STR( tokens[1], "mundo" );
   CHECK_NULL( tokens[2] );
-  CHECK_NOT_NULL( strstr(out, "mundo") ); // Debug echo of every token but the first
+  CHECK_NOT_NULL( strstr(out, "hola") );
+  CHECK_NOT_NULL( strstr(out, "mundo") );
+}
+
+TEST(tokenise_handles_more_tokens_than_the_initial_array)
+{
+  char out[8192];
+  char line[INPUT_BUFFER_SIZE];
+  size_t used = 0;
+
+  /* One token per two bytes, to fill the buffer with as many tokens as it takes. */
+  const size_t expected = (INPUT_BUFFER_SIZE - 1) / 2;
+  for ( size_t i = 0; i < expected; ++i )
+  {
+    line[used++] = 'a';
+    line[used++] = ' ';
+  }
+  line[used] = '\0';
+  SetGlobalInput(line);
+
+  CaptureStdoutStart();
+  char **tokens = Tokenise();
+  CaptureStdoutStop(out, sizeof(out));
+
+  CHECK_NOT_NULL( tokens );
+  if ( tokens == NULL )
+    return;
+
+  size_t count = 0;
+  while ( tokens[count] != NULL )
+  {
+    CHECK_EQ_STR( tokens[count], "a" );
+    ++count;
+  }
+  CHECK_EQ_SIZE( count, expected );
 }
 
 TEST(tokenise_consumes_the_global_buffer)
@@ -205,7 +239,7 @@ TEST(handle_input_tokenises_the_line_it_read)
   if ( info.Tokens == NULL || info.Input == NULL )
     return;
 
-  CHECK_EQ_MEM( info.Tokens[0], "hola", strlen("hola") );
+  CHECK_EQ_STR( info.Tokens[0], "hola" );
   CHECK_EQ_STR( info.Tokens[1], "mundo" );
   CHECK_NULL( info.Tokens[2] );
 
@@ -291,6 +325,7 @@ RegisterLIUnitTests
   RUN_TEST(tokenise_returns_null_when_the_input_is_only_delimiters);
   RUN_TEST(tokenise_splits_a_single_word);
   RUN_TEST(tokenise_splits_on_punctuation_and_spaces);
+  RUN_TEST(tokenise_handles_more_tokens_than_the_initial_array);
   RUN_TEST(tokenise_consumes_the_global_buffer);
 
   RUN_TEST(handle_input_delegates_to_linked_when_linked);

@@ -1,3 +1,6 @@
+#ifndef _HASH_
+#define _HASH_
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
@@ -45,7 +48,7 @@ struct Hash
     easier to use.
   */
 
-  const int
+  int
   (*insert)
     (Hash *this, 
     const void *key,
@@ -70,7 +73,7 @@ struct Hash
     (Hash *this,
     DisplayType type);
   
-  const int
+  int
   (*resize)
     (Hash *this);
   
@@ -134,3 +137,5 @@ Hash
 *Hinit
   (void);
 
+
+#endif
