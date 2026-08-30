@@ -19,27 +19,12 @@ CentralProcess
     return ERROR;
   }
 
-  int Herr = INSERT(h, msg, sizeof(msg), vl, sizeof(vl));
-  if ( !Herr )
-    Herr = INSERT(h, msg2, sizeof(msg2), vl2, sizeof(vl2));
-  if ( Herr )
-  {
-    PrtError( "Hash insertion failed.", Herr );
-    DESTROY(h);
-    return ERROR;
-  }
-  if ( DISPLAY(h, CHAR) )
-    PrtDbgError( "Could not display the hash table.", "CPU -> CentralProcess" );
+  INSERT(h, msg, sizeof(msg), vl, sizeof(vl));
+  INSERT(h, msg2, sizeof(msg2), vl2, sizeof(vl2));
+  DISPLAY(h, CHAR);
   char vl1[] = "Metanfetamina";
-  Herr = INSERT(h, msg, sizeof(msg), vl1, sizeof(vl1));
-  if ( Herr )
-  {
-    PrtError( "Hash insertion failed.", Herr );
-    DESTROY(h);
-    return ERROR;
-  }
-  if ( DISPLAY(h, CHAR) )
-    PrtDbgError( "Could not display the hash table.", "CPU -> CentralProcess" );
+  INSERT(h, msg, sizeof(msg), vl1, sizeof(vl1));
+  DISPLAY(h, CHAR);
 
   const RHEntry *entry = FETCH(h, msg, sizeof(msg));
   if ( NULL == entry )
