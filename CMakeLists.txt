@@ -28,44 +28,68 @@ endif()
 
 include(cmake/DanaModule.cmake)
 
-# One static library per module. src/<name>/Public is on the include path of
-# whoever depends on the module, src/<name>/Private only of the module itself,
-# so a module can never reach into another one's internals.
-dana_module(GUtils
+# Foundation: allocation, status codes, logging
+dana_module(Core
   SOURCES
-    GUtils_Allocation.c
-    GUtils_Debug.c
+    Core.c
+    Log.c
 )
 
-dana_module(Hash
+# Data structures the model is built out of
+dana_module(Collections
   SOURCES
-    Hash_Access.c
-    Hash_Display.c
-    Hash_Hash.c
-    Hash_Lifecycle.c
-    Hash_Modify.c
-    Hash_Utils.c
-  PRIVATE_DEPENDS GUtils
+    HashMap.c
+    HashMap_Probe.c
+  PRIVATE_DEPENDS Core
 )
 
-dana_module(LI_Unit
-  SOURCES LI_Unit.c
-  PRIVATE_DEPENDS GUtils
+# Text in, tokens out
+dana_module(Text
+  SOURCES Tokenizer.c
+  PRIVATE_DEPENDS Core
 )
 
-dana_module(LP_Unit
-  SOURCES LP_Unit.c
-  PUBLIC_DEPENDS LI_Unit # LP_Unit.h exposes LI_info
+# Where the text comes from
+dana_module(Corpus
+  SOURCES Corpus.c
+  PRIVATE_DEPENDS Core
 )
 
-dana_module(CPU
-  SOURCES CPU.c
-  PUBLIC_DEPENDS LI_Unit LP_Unit
-  PRIVATE_DEPENDS GUtils Hash
+# Words <-> integer ids
+dana_module(Vocab
+  SOURCES Vocab.c
+  PRIVATE_DEPENDS Core Collections
 )
 
-add_executable(Dana src/Dana/Private/main.c)
-target_link_libraries(Dana PRIVATE CPU)
+# The language model itself
+dana_module(NGram
+  SOURCES
+    NGram.c
+    NGram_Sampling.c
+  PUBLIC_DEPENDS Vocab
+  PRIVATE_DEPENDS Core Collections
+)
+
+# Counting a corpus into the model
+dana_module(Trainer
+  SOURCES Trainer.c
+  PUBLIC_DEPENDS NGram Vocab
+  PRIVATE_DEPENDS Core Corpus Text
+)
+
+# Generating replies and the conversation loop
+dana_module(Chat
+  SOURCES Chat.c
+  PUBLIC_DEPENDS NGram Vocab
+  PRIVATE_DEPENDS Core Corpus Text
+)
+
+add_executable(Dana src/App/Private/main.c)
+target_link_libraries(Dana PRIVATE Chat Core Trainer)
+
+if(NOT MSVC)
+  target_link_libraries(NGram PRIVATE m)
+endif()
 
 include(CTest)
 
