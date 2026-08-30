@@ -18,44 +18,57 @@ else()
   add_compile_options(-Wall -Wextra)
 endif()
 
-# Everything but main.c lives here, so the tests can link against it
-add_library(dana_core STATIC
-  src/core/GUtils_Allocation.c
-  src/core/GUtils_Debug.c
-  src/core/Hash_Access.c
-  src/core/Hash_Display.c
-  src/core/Hash_Hash.c
-  src/core/Hash_Lifecycle.c
-  src/core/Hash_Modify.c
-  src/core/Hash_Utils.c
-  src/cpu/CPU.c
-  src/lang/LI_Unit.c
-  src/lang/LP_Unit.c
-)
-
-target_include_directories(dana_core
-  PUBLIC include
-  PRIVATE src/core # Hash_internal.h and GUtils_internal.h
-)
-
 if(DANA_SANITIZE)
   if(MSVC)
     message(FATAL_ERROR "DANA_SANITIZE is only supported on GCC and Clang")
   endif()
-  target_compile_options(dana_core PUBLIC -fsanitize=address,undefined -fno-omit-frame-pointer -g)
-  target_link_options(dana_core PUBLIC -fsanitize=address,undefined)
+  add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer -g)
+  add_link_options(-fsanitize=address,undefined)
 endif()
 
-add_executable(Dana src/main.c)
-target_link_libraries(Dana PRIVATE dana_core)
+include(cmake/DanaModule.cmake)
+
+# One static library per module. src/<name>/Public is on the include path of
+# whoever depends on the module, src/<name>/Private only of the module itself,
+# so a module can never reach into another one's internals.
+dana_module(GUtils
+  SOURCES
+    GUtils_Allocation.c
+    GUtils_Debug.c
+)
+
+dana_module(Hash
+  SOURCES
+    Hash_Access.c
+    Hash_Display.c
+    Hash_Hash.c
+    Hash_Lifecycle.c
+    Hash_Modify.c
+    Hash_Utils.c
+  PRIVATE_DEPENDS GUtils
+)
+
+dana_module(LI_Unit
+  SOURCES LI_Unit.c
+  PRIVATE_DEPENDS GUtils
+)
+
+dana_module(LP_Unit
+  SOURCES LP_Unit.c
+  PUBLIC_DEPENDS LI_Unit # LP_Unit.h exposes LI_info
+)
+
+dana_module(CPU
+  SOURCES CPU.c
+  PUBLIC_DEPENDS LI_Unit LP_Unit
+  PRIVATE_DEPENDS GUtils Hash
+)
+
+add_executable(Dana src/Dana/Private/main.c)
+target_link_libraries(Dana PRIVATE CPU)
 
 include(CTest)
 
 if(BUILD_TESTING)
-  foreach(test_name test_hash test_tokenise)
-    add_executable(${test_name} tests/${test_name}.c)
-    target_link_libraries(${test_name} PRIVATE dana_core)
-    target_include_directories(${test_name} PRIVATE src/core tests)
-    add_test(NAME ${test_name} COMMAND ${test_name})
-  endforeach()
+  add_subdirectory(tests)
 endif()
